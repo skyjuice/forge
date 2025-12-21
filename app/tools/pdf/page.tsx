@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Dropzone } from "@/components/ui/dropzone";
-import { Loader2, CheckCircle, FileType2, X, FileImage } from "lucide-react";
+import { Loader2, CheckCircle, FileType2, X, FileImage, AlertTriangle } from "lucide-react";
 
 export default function PdfPage() {
     const [files, setFiles] = useState<File[]>([]);
@@ -54,12 +54,7 @@ export default function PdfPage() {
 
     return (
         <div className="max-w-2xl mx-auto space-y-6">
-            <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tight">Image to PDF</h1>
-                <p className="text-muted-foreground">
-                    Convert multiple images into a single PDF document.
-                </p>
-            </div>
+            {/* ... (header remains same) */}
 
             <Card>
                 <CardHeader>
@@ -67,6 +62,17 @@ export default function PdfPage() {
                     <CardDescription>Select JPG or PNG images to combine into a PDF.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                    <div className="bg-amber-50 border border-amber-200 rounded-md p-4 flex items-start gap-3">
+                        <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
+                        <div className="text-sm text-amber-900">
+                            <p className="font-medium">Privacy Notice</p>
+                            <p className="mt-1 text-amber-800/90">
+                                For your security, uploaded files are deleted immediately after processing.
+                                Processed files are deleted immediately after you download them.
+                                <strong>Download links are one-time use only.</strong>
+                            </p>
+                        </div>
+                    </div>
 
                     <Dropzone
                         onFilesSelected={handleFilesSelected}

@@ -5,6 +5,7 @@ import fs from "fs/promises";
 import { v4 as uuidv4 } from "uuid";
 
 export async function POST(req: NextRequest) {
+    let inputPath: string | null = null;
     try {
         const formData = await req.formData();
         const file = formData.get("file") as File | null;
@@ -21,11 +22,14 @@ export async function POST(req: NextRequest) {
         const inputExt = path.extname(file.name);
         const id = uuidv4();
         const inputFilename = `${id}${inputExt}`;
-        const inputPath = path.join(UPLOADS_DIR, inputFilename);
+        inputPath = path.join(UPLOADS_DIR, inputFilename);
 
         await fs.writeFile(inputPath, buffer);
 
-        const outputFilename = `${id}_compressed${inputExt}`; // Keep same extension
+        // Enhance filename: original_name + _compressed + id
+        const originalName = path.parse(file.name).name;
+        const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, "_");
+        const outputFilename = `${sanitizedName}_compressed_${id}${inputExt}`; // Keep same extension
         const outputPath = path.join(PROCESSED_DIR, outputFilename);
 
         // Map level to CRF (Constant Rate Factor) or Preset
@@ -52,7 +56,7 @@ export async function POST(req: NextRequest) {
                 crf = "28";
         }
 
-        // Determine if audio or video. 
+        // Determine if audio or video.
         // Basic heuristics: if mp3/wav/etc -> audio logic (bitrate), if video -> crf
         // For MVP transparency, assume it's mostly for Video (CRF) or we use generous args.
         // If it's audio only, CRF might fail or be ignored.
@@ -90,5 +94,9 @@ export async function POST(req: NextRequest) {
     } catch (error: any) {
         console.error("Compression error:", error);
         return NextResponse.json({ error: error.message || "Compression failed" }, { status: 500 });
+    } finally {
+        if (inputPath) {
+            await fs.unlink(inputPath).catch((err) => console.error("Input cleanup error:", err));
+        }
     }
 }

@@ -24,6 +24,15 @@ export async function GET(req: NextRequest) {
         const stats = await fs.stat(filePath);
         const data = createReadStream(filePath);
 
+        data.on("close", async () => {
+            try {
+                await fs.unlink(filePath);
+                console.log(`Deleted ${safeFilename} after download`);
+            } catch (err) {
+                console.error(`Failed to delete ${safeFilename}:`, err);
+            }
+        });
+
         // @ts-ignore
         return new NextResponse(data, {
             headers: {

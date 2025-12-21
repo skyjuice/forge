@@ -7,23 +7,23 @@ import mammoth from "mammoth";
 import puppeteer from "puppeteer";
 
 export async function POST(req: NextRequest) {
-    try {
-        const formData = await req.formData();
-        const file = formData.get("file") as File | null;
+  try {
+    const formData = await req.formData();
+    const file = formData.get("file") as File | null;
 
-        if (!file) {
-            return NextResponse.json({ error: "File is required" }, { status: 400 });
-        }
+    if (!file) {
+      return NextResponse.json({ error: "File is required" }, { status: 400 });
+    }
 
-        await ensureDir(PROCESSED_DIR);
+    await ensureDir(PROCESSED_DIR);
 
-        const buffer = Buffer.from(await file.arrayBuffer());
+    const buffer = Buffer.from(await file.arrayBuffer());
 
-        // 1. Convert DOCX to HTML using Mammoth
-        const { value: html } = await mammoth.convertToHtml({ buffer });
+    // 1. Convert DOCX to HTML using Mammoth
+    const { value: html } = await mammoth.convertToHtml({ buffer });
 
-        // 2. Wrap HTML in a basic template for better rendering
-        const fullHtml = `
+    // 2. Wrap HTML in a basic template for better rendering
+    const fullHtml = `
       <!DOCTYPE html>
       <html>
         <head>
@@ -41,35 +41,39 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
-        // 3. Use Puppeteer to generate PDF from HTML
-        const browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox'] // Safer for containerized envs if needed
-        });
-        const page = await browser.newPage();
-        await page.setContent(fullHtml, { waitUntil: 'networkidle0' });
+    // 3. Use Puppeteer to generate PDF from HTML
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'] // Safer for containerized envs if needed
+    });
+    const page = await browser.newPage();
+    await page.setContent(fullHtml, { waitUntil: 'networkidle0' });
 
-        const pdfBuffer = await page.pdf({
-            format: 'A4',
-            printBackground: true,
-            margin: { top: '20px', bottom: '20px', left: '20px', right: '20px' }
-        });
+    const pdfBuffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '20px', bottom: '20px', left: '20px', right: '20px' }
+    });
 
-        await browser.close();
+    await browser.close();
 
-        // 4. Save PDF
-        const id = uuidv4();
-        const outputFilename = `${id}.pdf`;
-        const outputPath = path.join(PROCESSED_DIR, outputFilename);
+    // 4. Save PDF
+    const id = uuidv4();
 
-        await fs.writeFile(outputPath, pdfBuffer);
+    const originalName = path.parse(file.name).name;
+    const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, "_");
+    const outputFilename = `${sanitizedName}_${id}.pdf`;
 
-        return NextResponse.json({
-            url: `/api/download?file=${outputFilename}`
-        });
+    const outputPath = path.join(PROCESSED_DIR, outputFilename);
 
-    } catch (error: any) {
-        console.error("Word to PDF error:", error);
-        return NextResponse.json({ error: error.message || "Conversion failed" }, { status: 500 });
-    }
+    await fs.writeFile(outputPath, pdfBuffer);
+
+    return NextResponse.json({
+      url: `/api/download?file=${outputFilename}`
+    });
+
+  } catch (error: any) {
+    console.error("Word to PDF error:", error);
+    return NextResponse.json({ error: error.message || "Conversion failed" }, { status: 500 });
+  }
 }

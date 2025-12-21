@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 // Next.js App Router handles FormData well natively with request.formData()
 
 export async function POST(req: NextRequest) {
+    let inputPath: string | null = null;
     try {
         const formData = await req.formData();
         const file = formData.get("file") as File | null;
@@ -24,11 +25,14 @@ export async function POST(req: NextRequest) {
         const inputExt = path.extname(file.name);
         const id = uuidv4();
         const inputFilename = `${id}${inputExt}`;
-        const inputPath = path.join(UPLOADS_DIR, inputFilename);
+        inputPath = path.join(UPLOADS_DIR, inputFilename);
 
         await fs.writeFile(inputPath, buffer);
 
-        const outputFilename = `${id}.${format}`;
+        // Enhance filename: original_name + id
+        const originalName = path.parse(file.name).name;
+        const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, "_"); // Remove special chars
+        const outputFilename = `${sanitizedName}_${id}.${format}`;
         const outputPath = path.join(PROCESSED_DIR, outputFilename);
 
         // FFmpeg arguments based on format
@@ -47,9 +51,6 @@ export async function POST(req: NextRequest) {
             args,
         });
 
-        // Cleanup input file? Maybe keep for debug for now, or delete.
-        // await fs.unlink(inputPath);
-
         return NextResponse.json({
             url: `/api/download?file=${outputFilename}`
         });
@@ -57,5 +58,9 @@ export async function POST(req: NextRequest) {
     } catch (error: any) {
         console.error("Conversion error:", error);
         return NextResponse.json({ error: error.message || "Conversion failed" }, { status: 500 });
+    } finally {
+        if (inputPath) {
+            await fs.unlink(inputPath).catch((err) => console.error("Input cleanup error:", err));
+        }
     }
 }

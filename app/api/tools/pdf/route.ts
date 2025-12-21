@@ -43,7 +43,13 @@ export async function POST(req: NextRequest) {
 
         const pdfBytes = await pdfDoc.save();
         const id = uuidv4();
-        const outputFilename = `${id}.pdf`;
+
+        // Use first file name as base for merged PDF
+        const firstFile = files[0];
+        const originalName = path.parse(firstFile.name).name;
+        const sanitizedName = originalName.replace(/[^a-zA-Z0-9]/g, "_");
+
+        const outputFilename = `${sanitizedName}_merged_${id}.pdf`;
         const outputPath = path.join(PROCESSED_DIR, outputFilename);
 
         await fs.writeFile(outputPath, pdfBytes);

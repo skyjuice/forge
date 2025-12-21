@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Dropzone } from "@/components/ui/dropzone";
-import { Loader2, Upload, CheckCircle, FileMusic, X } from "lucide-react";
+import { Loader2, Upload, CheckCircle, FileMusic, X, AlertTriangle } from "lucide-react";
 
 export default function ConverterPage() {
     const [file, setFile] = useState<File | null>(null);
@@ -73,6 +73,17 @@ export default function ConverterPage() {
                     <CardDescription>Select your source file and target format.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                    <div className="bg-amber-50 border border-amber-200 rounded-md p-4 flex items-start gap-3">
+                        <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
+                        <div className="text-sm text-amber-900">
+                            <p className="font-medium">Privacy Notice</p>
+                            <p className="mt-1 text-amber-800/90">
+                                For your security, uploaded files are deleted immediately after processing.
+                                Processed files are deleted immediately after you download them.
+                                <strong>Download links are one-time use only.</strong>
+                            </p>
+                        </div>
+                    </div>
 
                     {!file ? (
                         <Dropzone

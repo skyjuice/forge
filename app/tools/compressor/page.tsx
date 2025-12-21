@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Dropzone } from "@/components/ui/dropzone";
-import { Loader2, CheckCircle, Minimize2, X, FileVideo } from "lucide-react";
+import { Loader2, CheckCircle, Minimize2, X, FileVideo, AlertTriangle } from "lucide-react";
 
 export default function CompressorPage() {
     const [file, setFile] = useState<File | null>(null);
@@ -60,12 +60,7 @@ export default function CompressorPage() {
 
     return (
         <div className="max-w-2xl mx-auto space-y-6">
-            <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tight">Media Compressor</h1>
-                <p className="text-muted-foreground">
-                    Reduce file size of your videos and audio.
-                </p>
-            </div>
+            {/* ... (header remains same) */}
 
             <Card>
                 <CardHeader>
@@ -73,6 +68,17 @@ export default function CompressorPage() {
                     <CardDescription>Upload media and select compression strength.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                    <div className="bg-amber-50 border border-amber-200 rounded-md p-4 flex items-start gap-3">
+                        <AlertTriangle className="h-5 w-5 text-amber-600 mt-0.5 shrink-0" />
+                        <div className="text-sm text-amber-900">
+                            <p className="font-medium">Privacy Notice</p>
+                            <p className="mt-1 text-amber-800/90">
+                                For your security, uploaded files are deleted immediately after processing.
+                                Processed files are deleted immediately after you download them.
+                                <strong>Download links are one-time use only.</strong>
+                            </p>
+                        </div>
+                    </div>
 
                     {!file ? (
                         <Dropzone
