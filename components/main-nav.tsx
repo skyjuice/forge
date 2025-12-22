@@ -25,15 +25,8 @@ export function MainNav() {
                         <span className="font-bold inline-block">IbuForge</span>
                     </Link>
                     <nav className="flex items-center space-x-4 text-sm font-medium">
-                        <Link
-                            href="/"
-                            className={cn(
-                                "transition-colors hover:text-foreground/80",
-                                pathname === "/" ? "text-foreground" : "text-foreground/60"
-                            )}
-                        >
-                            Dashboard
-                        </Link>
+
+
 
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -69,6 +62,9 @@ export function MainNav() {
                                 <DropdownMenuSeparator />
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/pdf" className="w-full cursor-pointer">PDF Builder</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/pdf-merger" className="w-full cursor-pointer">Merge PDF</Link>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/word-to-pdf" className="w-full cursor-pointer">Word to PDF</Link>

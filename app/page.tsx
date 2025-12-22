@@ -64,6 +64,13 @@ export default function Page() {
                     href: "/tools/word-to-pdf",
                     cta: "Convert DOCX",
                 },
+                {
+                    title: "Merge PDF",
+                    description: "Combine multiple PDF files into one.",
+                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/pdf-merger",
+                    cta: "Merge PDF",
+                },
             ],
         },
     ];
