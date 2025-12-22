@@ -22,7 +22,7 @@ export function MainNav() {
             <div className="container mx-auto flex h-14 items-center px-4">
                 <div className="mr-4 flex">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <span className="font-bold inline-block">Forge</span>
+                        <span className="font-bold inline-block">IbuForge</span>
                     </Link>
                     <nav className="flex items-center space-x-4 text-sm font-medium">
                         <Link

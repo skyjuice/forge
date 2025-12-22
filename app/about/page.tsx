@@ -14,7 +14,7 @@ export default function AboutPage() {
 
             <div className="space-y-8">
                 <div className="space-y-2">
-                    <h1 className="text-3xl font-bold tracking-tight">About Forge</h1>
+                    <h1 className="text-3xl font-bold tracking-tight">About IbuForge</h1>
                     <p className="text-xl text-muted-foreground">
                         Simple, powerful tools focused on privacy and efficiency.
                     </p>

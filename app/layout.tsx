@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forge - Your All-in-One Tools",
+  title: "IbuForge - Your All-in-One Tools",
   description: "A Swiss-Army knife application for media and document processing.",
 };
 
