@@ -154,7 +154,14 @@ export default function BackgroundRemoverClient() {
 
                                 <div className="w-full md:w-1/2 space-y-2">
                                     <Label>Result</Label>
-                                    <div className="border rounded-lg overflow-hidden bg-[url('/transparent-grid.png')] bg-repeat bg-center aspect-video flex items-center justify-center relative bg-white/5">
+                                    <div
+                                        className="border rounded-lg overflow-hidden aspect-video flex items-center justify-center relative"
+                                        style={{
+                                            backgroundImage: 'repeating-conic-gradient(#e5e7eb 0% 25%, #ffffff 0% 50%)',
+                                            backgroundSize: '20px 20px',
+                                            backgroundPosition: '0 0'
+                                        }}
+                                    >
                                         {processing ? (
                                             <div className="flex flex-col items-center gap-2">
                                                 <Loader2 className="h-8 w-8 animate-spin text-primary" />

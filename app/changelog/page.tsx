@@ -10,12 +10,41 @@ export default function ChangelogPage() {
             </div>
 
             <div className="space-y-8">
+                {/* Version 1.2.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.2.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">New Features</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Image Converter:</strong> Convert between JPG, PNG, and WebP formats securely.</li>
+                                <li><strong>Image Resizer:</strong> Resize images by pixel or percentage with aspect ratio lock.</li>
+                                <li><strong>Image Compressor:</strong> Reduce image file sizes directly in your browser.</li>
+                                <li><strong>Background Remover:</strong> Remove image backgrounds or replace them with white using AI.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Improvements</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Mobile Navigation:</strong> Implemented a responsive "Burger Menu" for better mobile experience.</li>
+                                <li><strong>Transparency Helper:</strong> Added a checkerboard pattern to visualize transparent backgrounds in result previews.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.1.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.1.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 23, 2025</span>
                     </CardHeader>
