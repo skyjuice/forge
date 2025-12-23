@@ -28,12 +28,15 @@ WORKDIR /app
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Install FFmpeg and Chromium for Puppeteer
-# We install chromium and tell puppeteer to use it to avoid downloading generic chrome
-RUN apk add --no-cache ffmpeg chromium nss freetype harfbuzz ca-certificates ttf-freefont
+# Increase Node memory limit to use Swap space (Total 5GB available: 1GB RAM + 4GB Swap)
+# We set it to ~3.5GB to leave room for OS
+ENV NODE_OPTIONS="--max-old-space-size=3584"
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+# Deprecated: Chromium/FFmpeg removed to save space. 
+# Media tools now run client-side (WASM).
+# RUN apk add --no-cache ffmpeg chromium nss freetype harfbuzz ca-certificates ttf-freefont
+# ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+# ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
