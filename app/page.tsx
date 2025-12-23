@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -98,6 +98,13 @@ export default function Page() {
                     icon: <FileImage className="h-10 w-10 text-primary" />,
                     href: "/tools/pdf-to-jpg",
                     cta: "Convert to JPG",
+                },
+                {
+                    title: "Page Numbers",
+                    description: "Add page numbers into your PDF with ease.",
+                    icon: <Hash className="h-10 w-10 text-primary" />,
+                    href: "/tools/page-numbers",
+                    cta: "Add Numbers",
                 },
             ],
         },

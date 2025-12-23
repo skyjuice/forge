@@ -81,6 +81,9 @@ export function MainNav() {
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/pdf-to-jpg" className="w-full cursor-pointer">PDF to JPG</Link>
                                 </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/page-numbers" className="w-full cursor-pointer">Page Numbers</Link>
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
 
