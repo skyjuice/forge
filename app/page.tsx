@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -43,6 +43,33 @@ export default function Page() {
                     icon: <Minimize2 className="h-10 w-10 text-primary" />,
                     href: "/tools/compressor",
                     cta: "Compress Media",
+                },
+            ],
+        },
+        {
+            id: "images",
+            label: "Image Tools",
+            tools: [
+                {
+                    title: "Image Converter",
+                    description: "Convert images between JPG, PNG, and WebP.",
+                    icon: <RefreshCcw className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-converter",
+                    cta: "Convert Image",
+                },
+                {
+                    title: "Image Resizer",
+                    description: "Resize images by pixel dimensions or percentage.",
+                    icon: <Scaling className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-resizer",
+                    cta: "Resize Image",
+                },
+                {
+                    title: "Image Compressor",
+                    description: "Compress images efficiently in browser.",
+                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-compressor",
+                    cta: "Compress Image",
                 },
             ],
         },

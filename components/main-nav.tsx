@@ -53,6 +53,28 @@ export function MainNav() {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" className="h-8 gap-1 p-0 px-2 text-sm font-medium text-foreground/60 hover:text-foreground data-[state=open]:text-foreground">
+                                    Images
+                                    <ChevronDown className="h-4 w-4" />
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="start">
+                                <DropdownMenuLabel>Image Tools</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/image-converter" className="w-full cursor-pointer">Converter</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/image-resizer" className="w-full cursor-pointer">Resizer</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/image-compressor" className="w-full cursor-pointer">Compressor</Link>
+                                </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" className="h-8 gap-1 p-0 px-2 text-sm font-medium text-foreground/60 hover:text-foreground data-[state=open]:text-foreground">
                                     Documents
                                     <ChevronDown className="h-4 w-4" />
                                 </Button>
