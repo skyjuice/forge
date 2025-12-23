@@ -1,18 +1,11 @@
-"use client";
+import { Metadata } from 'next';
+import RotatePdfWrapper from "./wrapper";
 
-import dynamic from "next/dynamic";
-import { Loader2 } from "lucide-react";
-
-const RotatePdfClient = dynamic(() => import("./client"), {
-    ssr: false,
-    loading: () => (
-        <div className="flex flex-col items-center justify-center min-h-[400px] text-muted-foreground gap-2">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>Loading Rotate PDF Tool...</p>
-        </div>
-    )
-});
+export const metadata: Metadata = {
+    title: 'Rotate PDF - Rotate PDF Pages Free',
+    description: 'Rotate individual pages or entire PDF documents permanently. Client-side processing ensures your privacy.',
+};
 
 export default function RotatePdfPage() {
-    return <RotatePdfClient />;
+    return <RotatePdfWrapper />;
 }

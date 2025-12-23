@@ -1,18 +1,11 @@
-"use client";
+import { Metadata } from 'next';
+import OrganizePdfWrapper from "./wrapper";
 
-import dynamic from "next/dynamic";
-import { Loader2 } from "lucide-react";
-
-const OrganizePdfClient = dynamic(() => import("./client"), {
-    ssr: false,
-    loading: () => (
-        <div className="flex flex-col items-center justify-center min-h-[400px] text-muted-foreground gap-2">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p>Loading Organize PDF Tool...</p>
-        </div>
-    )
-});
+export const metadata: Metadata = {
+    title: 'Organize PDF - Rearrange, Delete, and Rotate Pages',
+    description: 'Reorder pages, delete pages, or rotate specific pages in your PDF file. Client-side, secure, and free.',
+};
 
 export default function OrganizePdfPage() {
-    return <OrganizePdfClient />;
+    return <OrganizePdfWrapper />;
 }
