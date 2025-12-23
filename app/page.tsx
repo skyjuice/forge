@@ -96,7 +96,7 @@ export default function Page() {
                     <div className="flex items-center gap-2 pb-2 border-b">
                         <h2 className="text-2xl font-semibold tracking-tight">{group.label}</h2>
                     </div>
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                         {group.tools.map((tool) => (
                             <Card key={tool.href} className="flex flex-col hover:bg-muted/50 transition-colors">
                                 <CardHeader>
