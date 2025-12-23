@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -70,6 +70,13 @@ export default function Page() {
                     icon: <Minimize2 className="h-10 w-10 text-primary" />,
                     href: "/tools/image-compressor",
                     cta: "Compress Image",
+                },
+                {
+                    title: "Background Remover",
+                    description: "Remove background or make it white.",
+                    icon: <Eraser className="h-10 w-10 text-primary" />,
+                    href: "/tools/background-remover",
+                    cta: "Remove Background",
                 },
             ],
         },

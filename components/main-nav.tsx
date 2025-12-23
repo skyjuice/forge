@@ -43,6 +43,7 @@ const navConfig = [
             { title: "Converter", href: "/tools/image-converter" },
             { title: "Resizer", href: "/tools/image-resizer" },
             { title: "Compressor", href: "/tools/image-compressor" },
+            { title: "Background Remover", href: "/tools/background-remover" },
         ],
     },
     {

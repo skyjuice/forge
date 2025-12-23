@@ -9,8 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/about',
         '/changelog',
         '/tools/converter',
-        '/tools/chopper',
-        '/tools/compressor',
+        '/tools/image-resizer',
+        '/tools/image-compressor',
+        '/tools/background-remover',
         '/tools/pdf', // JPG to PDF
         '/tools/word-to-pdf',
         '/tools/pdf-merger',
