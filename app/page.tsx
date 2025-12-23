@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Languages, Sparkles, Heart } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -197,33 +197,7 @@ export default function Page() {
                 },
             ],
         },
-        {
-            id: "ai",
-            label: "AI Power Tools (Private & Offline)",
-            tools: [
-                {
-                    title: "AI Summarizer",
-                    description: "Summarize long text instantly.",
-                    icon: <Sparkles className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/summarizer",
-                    cta: "Summarize",
-                },
-                {
-                    title: "AI Translator",
-                    description: "Translate text privately.",
-                    icon: <Languages className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/translator",
-                    cta: "Translate",
-                },
-                {
-                    title: "Sentiment Analysis",
-                    description: "Analyze tone and emotion.",
-                    icon: <Heart className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/sentiment",
-                    cta: "Analyze",
-                },
-            ],
-        },
+
     ];
 
     return (

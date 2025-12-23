@@ -10,35 +10,14 @@ export default function ChangelogPage() {
             </div>
 
             <div className="space-y-8">
-                {/* Version 1.6.0 */}
-                <Card>
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <div className="flex items-center gap-4">
-                            <CardTitle className="text-2xl">v1.6.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
-                        </div>
-                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                        <div className="space-y-2">
-                            <h3 className="font-semibold text-lg">AI Power Tools 🤖</h3>
-                            <p className="text-muted-foreground text-sm">A suite of privacy-first AI tools running 100% in your browser.</p>
-                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
-                                <li><strong>AI Summarizer:</strong> Summarize long articles or documents locally.</li>
-                                <li><strong>AI Translator:</strong> Translate text securely without third-party APIs.</li>
-                                <li><strong>Sentiment Analysis:</strong> Detect emotion and tone in text.</li>
-                                <li><strong>Offline Capability:</strong> AI models are downloaded once and run offline forever.</li>
-                            </ul>
-                        </div>
-                    </CardContent>
-                </Card>
+
 
                 {/* Version 1.5.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.5.0</CardTitle>
-                            <Badge variant="secondary">Previous</Badge>
+                            <Badge variant="default">Latest</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 23, 2025</span>
                     </CardHeader>
