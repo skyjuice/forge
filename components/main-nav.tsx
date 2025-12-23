@@ -30,11 +30,17 @@ import {
 
 const navConfig = [
     {
-        title: "Media",
+        title: "Documents",
         items: [
-            { title: "Converter", href: "/tools/converter" },
-            { title: "Chopper", href: "/tools/chopper" },
-            { title: "Compressor", href: "/tools/compressor" },
+            { title: "PDF Builder", href: "/tools/pdf" },
+            { title: "Merge PDF", href: "/tools/pdf-merger" },
+            { title: "Word to PDF", href: "/tools/word-to-pdf" },
+            { title: "Split PDF", href: "/tools/split-pdf" },
+            { title: "Rotate PDF", href: "/tools/rotate-pdf" },
+            { title: "Organize PDF", href: "/tools/organize-pdf" },
+            { title: "PDF to JPG", href: "/tools/pdf-to-jpg" },
+            { title: "Page Numbers", href: "/tools/page-numbers" },
+            { title: "Watermark", href: "/tools/watermark" },
         ],
     },
     {
@@ -47,17 +53,11 @@ const navConfig = [
         ],
     },
     {
-        title: "Documents",
+        title: "Media",
         items: [
-            { title: "PDF Builder", href: "/tools/pdf" },
-            { title: "Merge PDF", href: "/tools/pdf-merger" },
-            { title: "Word to PDF", href: "/tools/word-to-pdf" },
-            { title: "Split PDF", href: "/tools/split-pdf" },
-            { title: "Rotate PDF", href: "/tools/rotate-pdf" },
-            { title: "Organize PDF", href: "/tools/organize-pdf" },
-            { title: "PDF to JPG", href: "/tools/pdf-to-jpg" },
-            { title: "Page Numbers", href: "/tools/page-numbers" },
-            { title: "Watermark", href: "/tools/watermark" },
+            { title: "Converter", href: "/tools/converter" },
+            { title: "Chopper", href: "/tools/chopper" },
+            { title: "Compressor", href: "/tools/compressor" },
         ],
     },
 ];

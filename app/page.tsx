@@ -20,67 +20,6 @@ interface ToolGroup {
 export default function Page() {
     const groups: ToolGroup[] = [
         {
-            id: "media",
-            label: "Media Tools",
-            tools: [
-                {
-                    title: "Converter",
-                    description: "Convert video and audio files to different formats.",
-                    icon: <FileMusic className="h-10 w-10 text-primary" />,
-                    href: "/tools/converter",
-                    cta: "Convert Media",
-                },
-                {
-                    title: "Chopper",
-                    description: "Split long recordings into manageable chunks.",
-                    icon: <Scissors className="h-10 w-10 text-primary" />,
-                    href: "/tools/chopper",
-                    cta: "Slice Media",
-                },
-                {
-                    title: "Compressor",
-                    description: "Reduce file size of videos and audio.",
-                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
-                    href: "/tools/compressor",
-                    cta: "Compress Media",
-                },
-            ],
-        },
-        {
-            id: "images",
-            label: "Image Tools",
-            tools: [
-                {
-                    title: "Image Converter",
-                    description: "Convert images between JPG, PNG, and WebP.",
-                    icon: <RefreshCcw className="h-10 w-10 text-primary" />,
-                    href: "/tools/image-converter",
-                    cta: "Convert Image",
-                },
-                {
-                    title: "Image Resizer",
-                    description: "Resize images by pixel dimensions or percentage.",
-                    icon: <Scaling className="h-10 w-10 text-primary" />,
-                    href: "/tools/image-resizer",
-                    cta: "Resize Image",
-                },
-                {
-                    title: "Image Compressor",
-                    description: "Compress images efficiently in browser.",
-                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
-                    href: "/tools/image-compressor",
-                    cta: "Compress Image",
-                },
-                {
-                    title: "Background Remover",
-                    description: "Remove background or make it white.",
-                    icon: <Eraser className="h-10 w-10 text-primary" />,
-                    href: "/tools/background-remover",
-                    cta: "Remove Background",
-                },
-            ],
-        },
-        {
             id: "documents",
             label: "Document Tools",
             tools: [
@@ -146,6 +85,67 @@ export default function Page() {
                     icon: <Stamp className="h-10 w-10 text-primary" />,
                     href: "/tools/watermark",
                     cta: "Watermark PDF",
+                },
+            ],
+        },
+        {
+            id: "images",
+            label: "Image Tools",
+            tools: [
+                {
+                    title: "Image Converter",
+                    description: "Convert images between JPG, PNG, and WebP.",
+                    icon: <RefreshCcw className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-converter",
+                    cta: "Convert Image",
+                },
+                {
+                    title: "Image Resizer",
+                    description: "Resize images by pixel dimensions or percentage.",
+                    icon: <Scaling className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-resizer",
+                    cta: "Resize Image",
+                },
+                {
+                    title: "Image Compressor",
+                    description: "Compress images efficiently in browser.",
+                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/image-compressor",
+                    cta: "Compress Image",
+                },
+                {
+                    title: "Background Remover",
+                    description: "Remove background or make it white.",
+                    icon: <Eraser className="h-10 w-10 text-primary" />,
+                    href: "/tools/background-remover",
+                    cta: "Remove Background",
+                },
+            ],
+        },
+        {
+            id: "media",
+            label: "Media Tools",
+            tools: [
+                {
+                    title: "Converter",
+                    description: "Convert video and audio files to different formats.",
+                    icon: <FileMusic className="h-10 w-10 text-primary" />,
+                    href: "/tools/converter",
+                    cta: "Convert Media",
+                },
+                {
+                    title: "Chopper",
+                    description: "Split long recordings into manageable chunks.",
+                    icon: <Scissors className="h-10 w-10 text-primary" />,
+                    href: "/tools/chopper",
+                    cta: "Slice Media",
+                },
+                {
+                    title: "Compressor",
+                    description: "Reduce file size of videos and audio.",
+                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/compressor",
+                    cta: "Compress Media",
                 },
             ],
         },
