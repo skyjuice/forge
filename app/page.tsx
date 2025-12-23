@@ -78,6 +78,13 @@ export default function Page() {
                     href: "/tools/split-pdf",
                     cta: "Split PDF",
                 },
+                {
+                    title: "Rotate PDF",
+                    description: "Rotate specific pages or the entire document permanently.",
+                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/rotate-pdf",
+                    cta: "Rotate PDF",
+                },
             ],
         },
     ];
