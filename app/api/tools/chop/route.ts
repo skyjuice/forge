@@ -22,13 +22,20 @@ export async function POST(req: NextRequest) {
         await ensureDir(UPLOADS_DIR);
         await ensureDir(PROCESSED_DIR);
 
-        const buffer = Buffer.from(await file.arrayBuffer());
         const inputExt = path.extname(file.name);
         const id = uuidv4();
         const inputFilename = `${id}${inputExt}`;
         inputPath = path.join(UPLOADS_DIR, inputFilename);
 
-        await fs.writeFile(inputPath, buffer);
+        // Create write stream for input file
+        // Use pipeline to stream the file to disk to avoid memory issues with large files
+        const { pipeline } = await import("stream/promises");
+        const { createWriteStream } = await import("fs");
+
+        await pipeline(
+            file.stream() as unknown as NodeJS.ReadableStream,
+            createWriteStream(inputPath)
+        );
 
         // Create a temporary directory for segments
         segmentsDir = path.join(PROCESSED_DIR, `${id}_segments`);

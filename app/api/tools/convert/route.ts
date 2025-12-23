@@ -21,13 +21,18 @@ export async function POST(req: NextRequest) {
         await ensureDir(UPLOADS_DIR);
         await ensureDir(PROCESSED_DIR);
 
-        const buffer = Buffer.from(await file.arrayBuffer());
         const inputExt = path.extname(file.name);
         const id = uuidv4();
         const inputFilename = `${id}${inputExt}`;
         inputPath = path.join(UPLOADS_DIR, inputFilename);
 
-        await fs.writeFile(inputPath, buffer);
+        // Stream file to disk
+        const { pipeline } = await import("stream/promises");
+        const { createWriteStream } = await import("fs");
+        await pipeline(
+            file.stream() as unknown as NodeJS.ReadableStream,
+            createWriteStream(inputPath)
+        );
 
         // Enhance filename: original_name + id
         const originalName = path.parse(file.name).name;
