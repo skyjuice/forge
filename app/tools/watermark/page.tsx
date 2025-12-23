@@ -1,7 +1,11 @@
-"use client";
-
 import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Add Watermark - Protect PDFs with Text or Images',
+    description: 'Stamp your PDF documents with custom text or image watermarks. Adjust opacity, rotation, and position.',
+};
 
 const WatermarkClient = dynamic(() => import("./client"), {
     ssr: false,

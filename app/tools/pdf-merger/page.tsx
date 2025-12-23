@@ -8,6 +8,13 @@ import { PDFDocument } from "pdf-lib";
 import { Loader2, FileType2, X, ArrowUp, ArrowDown, FileText, CheckCircle } from "lucide-react";
 
 
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Merge PDF - Combine PDF Files for Free',
+    description: 'Merge multiple PDF files into one document securely in your browser. No file uploads required. Free, fast, and private.',
+};
+
 export default function PdfMergerPage() {
     const [files, setFiles] = useState<File[]>([]);
     const [merging, setMerging] = useState(false);

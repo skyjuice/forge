@@ -1,7 +1,11 @@
-"use client";
-
 import dynamic from "next/dynamic";
 import { Loader2 } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'PDF to JPG - Convert PDF Pages to Images',
+    description: 'Convert PDF pages into high-quality JPG or PNG images. Select specific pages or convert all at once. Free and secure.',
+};
 
 const PdfToJpgClient = dynamic(() => import("./client"), {
     ssr: false,
