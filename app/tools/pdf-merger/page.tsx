@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PDFDocument } from "pdf-lib";
 import { Loader2, FileType2, X, ArrowUp, ArrowDown, FileText, CheckCircle } from "lucide-react";
-import { PrivacyNotice } from "@/components/privacy-notice";
+
 
 export default function PdfMergerPage() {
     const [files, setFiles] = useState<File[]>([]);

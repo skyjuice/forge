@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dropzone } from "@/components/ui/dropzone";
 import { AlertCircle, Download, FileType2, Loader2, ArrowRight } from "lucide-react";
-import { PrivacyNotice } from "@/components/privacy-notice";
+
 
 export default function SplitPdfPage() {
     const [file, setFile] = useState<File | null>(null);
