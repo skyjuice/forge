@@ -26,6 +26,10 @@ export function SiteFooter() {
                         <Link href="/about" className="hover:text-foreground hover:underline underline-offset-4">
                             About
                         </Link>
+                        <span className="hidden md:inline text-muted-foreground/30">•</span>
+                        <Link href="/changelog" className="hover:text-foreground hover:underline underline-offset-4">
+                            Changelog
+                        </Link>
                     </div>
 
                     <div className="flex items-center gap-2">

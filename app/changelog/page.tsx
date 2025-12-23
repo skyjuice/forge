@@ -1,0 +1,69 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+export default function ChangelogPage() {
+    return (
+        <div className="container mx-auto py-12 px-4 max-w-4xl space-y-8">
+            <div className="space-y-2">
+                <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">Changelog</h1>
+                <p className="text-xl text-muted-foreground">all notable changes to IbuForge.</p>
+            </div>
+
+            <div className="space-y-8">
+                {/* Version 1.1.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.1.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">New Features</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>PDF to JPG:</strong> Convert PDF pages to high-quality images directly in your browser.</li>
+                                <li><strong>JPG to PDF:</strong> Convert images to PDF with drag-and-drop reordering.</li>
+                                <li><strong>Add Page Numbers:</strong> Add page numbers to PDFs with flexible positioning.</li>
+                                <li><strong>Add Watermark:</strong> Secure documents with text or image watermarks.</li>
+                                <li><strong>Rotate PDF:</strong> Rotate specific pages or entire documents.</li>
+                                <li><strong>Organize PDF:</strong> Reorder, delete, and rotate pages within a PDF.</li>
+                                <li><strong>Split PDF:</strong> Extract pages or split documents by custom ranges.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Improvements</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Dashboard:</strong> Optimized 5-column grid layout for larger screens.</li>
+                                <li><strong>Privacy:</strong> Standardized privacy notice across all tools.</li>
+                                <li><strong>UI:</strong> Updated icons for better visual distinction.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Version 1.0.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.0.0</CardTitle>
+                            <Badge variant="secondary">Initial Release</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 15, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Initial Launch</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Media Tools:</strong> Converter, Chopper, Compressor.</li>
+                                <li><strong>Document Tools:</strong> Word to PDF, Merge PDF.</li>
+                                <li><strong>Admin Panel:</strong> Initial release of admin dashboard foundation.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    );
+}
