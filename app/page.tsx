@@ -85,6 +85,13 @@ export default function Page() {
                     href: "/tools/rotate-pdf",
                     cta: "Rotate PDF",
                 },
+                {
+                    title: "Organize PDF",
+                    description: "Sort, delete, and rotate pages of your PDF file.",
+                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/organize-pdf",
+                    cta: "Organize PDF",
+                },
             ],
         },
     ];

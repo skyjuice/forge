@@ -75,6 +75,9 @@ export function MainNav() {
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/rotate-pdf" className="w-full cursor-pointer">Rotate PDF</Link>
                                 </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/organize-pdf" className="w-full cursor-pointer">Organize PDF</Link>
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
 
