@@ -10,12 +10,33 @@ export default function ChangelogPage() {
             </div>
 
             <div className="space-y-8">
+                {/* Version 1.3.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.3.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Major Privacy Upgrade</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Client-Side Media Engine:</strong> The Media Converter, Chopper, and Compressor now run 100% in your browser using WebAssembly.</li>
+                                <li><strong>Zero Server Uploads:</strong> Your audio and video files never leave your device, ensuring maximum privacy and speed.</li>
+                                <li><strong>Corporate Proxy Compatible:</strong> Fixed timeouts and "Bad Response" errors for users behind strict firewalls (e.g., Skyhigh).</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.2.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.2.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 23, 2025</span>
                     </CardHeader>
