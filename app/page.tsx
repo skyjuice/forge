@@ -51,11 +51,11 @@ export default function Page() {
             label: "Document Tools",
             tools: [
                 {
-                    title: "PDF Builder",
-                    description: "Create PDFs from images seamlessly.",
+                    title: "JPG to PDF",
+                    description: "Convert images (JPG, PNG) to PDF.",
                     icon: <Images className="h-10 w-10 text-primary" />,
                     href: "/tools/pdf",
-                    cta: "Create PDF",
+                    cta: "JPG to PDF",
                 },
                 {
                     title: "Word to PDF",
