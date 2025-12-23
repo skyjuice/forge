@@ -72,6 +72,13 @@ export function MainNav() {
                             </DropdownMenuContent>
                         </DropdownMenu>
 
+                        <Link
+                            href="/changelog"
+                            className="transition-colors hover:text-foreground/80 text-foreground/60 w-max"
+                        >
+                            Changelog
+                        </Link>
+
                     </nav>
                 </div>
             </div>
