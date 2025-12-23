@@ -71,6 +71,13 @@ export default function Page() {
                     href: "/tools/pdf-merger",
                     cta: "Merge PDF",
                 },
+                {
+                    title: "Split PDF",
+                    description: "Extract pages or split your PDF into multiple files.",
+                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/split-pdf",
+                    cta: "Split PDF",
+                },
             ],
         },
     ];

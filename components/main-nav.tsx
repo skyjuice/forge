@@ -69,6 +69,9 @@ export function MainNav() {
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/word-to-pdf" className="w-full cursor-pointer">Word to PDF</Link>
                                 </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/split-pdf" className="w-full cursor-pointer">Split PDF</Link>
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
 
