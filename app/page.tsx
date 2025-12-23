@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -105,6 +105,13 @@ export default function Page() {
                     icon: <Hash className="h-10 w-10 text-primary" />,
                     href: "/tools/page-numbers",
                     cta: "Add Numbers",
+                },
+                {
+                    title: "Add Watermark",
+                    description: "Stamp your documents with text or images.",
+                    icon: <Stamp className="h-10 w-10 text-primary" />,
+                    href: "/tools/watermark",
+                    cta: "Watermark PDF",
                 },
             ],
         },

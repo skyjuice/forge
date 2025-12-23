@@ -84,6 +84,9 @@ export function MainNav() {
                                 <DropdownMenuItem asChild>
                                     <Link href="/tools/page-numbers" className="w-full cursor-pointer">Page Numbers</Link>
                                 </DropdownMenuItem>
+                                <DropdownMenuItem asChild>
+                                    <Link href="/tools/watermark" className="w-full cursor-pointer">Watermark</Link>
+                                </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
 
