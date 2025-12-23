@@ -6,6 +6,14 @@ export function SiteFooter() {
     return (
         <footer className="border-t bg-muted/20">
             <div className="container mx-auto px-4 py-8">
+                <div className="mb-8 p-4 bg-muted/30 rounded-lg text-sm text-muted-foreground text-center max-w-4xl mx-auto">
+                    <p className="font-medium text-foreground mb-1">Privacy & Security Notice</p>
+                    <p>
+                        We prioritize your data privacy. For server-side tools (Converter, Chopper, Compressor, Word to PDF), files are <strong>deleted immediately</strong> after processing.
+                        For client-side tools (Merge, Split, PDF Builder), files are processed entirely within your browser and <strong>never uploaded</strong> to our servers.
+                    </p>
+                </div>
+
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                     <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-muted-foreground text-center md:text-left">
                         <p>

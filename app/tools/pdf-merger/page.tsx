@@ -72,7 +72,7 @@ export default function PdfMergerPage() {
                     <CardDescription>Combine multiple PDF files into one single document.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    <PrivacyNotice />
+
 
                     <Dropzone
                         onFilesSelected={handleFilesSelected}

@@ -150,7 +150,7 @@ export default function SplitPdfPage() {
                 </CardContent>
             </Card>
 
-            <PrivacyNotice />
+
         </div>
     );
 }
