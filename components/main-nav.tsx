@@ -34,7 +34,6 @@ const navConfig = [
         items: [
             { title: "PDF Builder", href: "/tools/pdf" },
             { title: "Merge PDF", href: "/tools/pdf-merger" },
-            { title: "Word to PDF", href: "/tools/word-to-pdf" },
             { title: "Split PDF", href: "/tools/split-pdf" },
             { title: "Rotate PDF", href: "/tools/rotate-pdf" },
             { title: "Organize PDF", href: "/tools/organize-pdf" },

@@ -31,13 +31,6 @@ export default function Page() {
                     cta: "JPG to PDF",
                 },
                 {
-                    title: "Word to PDF",
-                    description: "Convert DOCX documents to Professional PDFs.",
-                    icon: <FileText className="h-10 w-10 text-primary" />,
-                    href: "/tools/word-to-pdf",
-                    cta: "Convert DOCX",
-                },
-                {
                     title: "Merge PDF",
                     description: "Combine multiple PDF files into one.",
                     icon: <Files className="h-10 w-10 text-primary" />,
