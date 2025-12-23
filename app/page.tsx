@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Languages, Sparkles, Heart } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -146,6 +146,81 @@ export default function Page() {
                     icon: <Minimize2 className="h-10 w-10 text-primary" />,
                     href: "/tools/compressor",
                     cta: "Compress Media",
+                },
+            ],
+        },
+        {
+            id: "dev",
+            label: "Developer Tools",
+            tools: [
+                {
+                    title: "JSON Formatter",
+                    description: "Prettify, minify, and validate JSON data.",
+                    icon: <Braces className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/json-formatter",
+                    cta: "Format JSON",
+                },
+                {
+                    title: "XML Formatter",
+                    description: "Prettify, minify, and validate XML data.",
+                    icon: <FileCode className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/xml-formatter",
+                    cta: "Format XML",
+                },
+                {
+                    title: "Base64 Converter",
+                    description: "Encode and decode Base64 text instantly.",
+                    icon: <FileCode className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/base64",
+                    cta: "Base64 Tool",
+                },
+                {
+                    title: "JWT Debugger",
+                    description: "Decode and inspect JSON Web Tokens.",
+                    icon: <Key className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/jwt-debugger",
+                    cta: "Debug JWT",
+                },
+                {
+                    title: "SQL Formatter",
+                    description: "Format ugly SQL queries to be readable.",
+                    icon: <Database className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/sql-formatter",
+                    cta: "Format SQL",
+                },
+                {
+                    title: "Diff Checker",
+                    description: "Compare two text blocks for differences.",
+                    icon: <Diff className="h-10 w-10 text-primary" />,
+                    href: "/tools/dev/diff-checker",
+                    cta: "Compare Text",
+                },
+            ],
+        },
+        {
+            id: "ai",
+            label: "AI Power Tools (Private & Offline)",
+            tools: [
+                {
+                    title: "AI Summarizer",
+                    description: "Summarize long text instantly.",
+                    icon: <Sparkles className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/summarizer",
+                    cta: "Summarize",
+                },
+                {
+                    title: "AI Translator",
+                    description: "Translate text privately.",
+                    icon: <Languages className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/translator",
+                    cta: "Translate",
+                },
+                {
+                    title: "Sentiment Analysis",
+                    description: "Analyze tone and emotion.",
+                    icon: <Heart className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/sentiment",
+                    cta: "Analyze",
                 },
             ],
         },

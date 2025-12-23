@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { MainNav } from "@/components/main-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -79,10 +80,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-background font-sans`}
       >
         <MainNav />
+
+
         <main className="container mx-auto py-6 px-4 flex-1">
           {children}
         </main>
         <SiteFooter />
+        <Toaster />
       </body>
     </html>
   );

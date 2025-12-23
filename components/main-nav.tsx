@@ -60,6 +60,25 @@ const navConfig = [
             { title: "Compressor", href: "/tools/compressor" },
         ],
     },
+    {
+        title: "AI Power Tools",
+        items: [
+            { title: "Summarizer", href: "/tools/ai/summarizer" },
+            { title: "Translator", href: "/tools/ai/translator" },
+            { title: "Sentiment", href: "/tools/ai/sentiment" },
+        ],
+    },
+    {
+        title: "Developers",
+        items: [
+            { title: "JSON Formatter", href: "/tools/dev/json-formatter" },
+            { title: "XML Formatter", href: "/tools/dev/xml-formatter" },
+            { title: "Base64 Converter", href: "/tools/dev/base64" },
+            { title: "JWT Debugger", href: "/tools/dev/jwt-debugger" },
+            { title: "SQL Formatter", href: "/tools/dev/sql-formatter" },
+            { title: "Diff Checker", href: "/tools/dev/diff-checker" },
+        ],
+    },
 ];
 
 export function MainNav() {

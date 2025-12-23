@@ -10,12 +10,81 @@ export default function ChangelogPage() {
             </div>
 
             <div className="space-y-8">
+                {/* Version 1.6.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.6.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">AI Power Tools 🤖</h3>
+                            <p className="text-muted-foreground text-sm">A suite of privacy-first AI tools running 100% in your browser.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>AI Summarizer:</strong> Summarize long articles or documents locally.</li>
+                                <li><strong>AI Translator:</strong> Translate text securely without third-party APIs.</li>
+                                <li><strong>Sentiment Analysis:</strong> Detect emotion and tone in text.</li>
+                                <li><strong>Offline Capability:</strong> AI models are downloaded once and run offline forever.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Version 1.5.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.5.0</CardTitle>
+                            <Badge variant="secondary">Previous</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Developer Experience Upgrade 🎨</h3>
+                            <p className="text-muted-foreground text-sm">Upgraded standard text areas to professional code editors.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Monaco Editor:</strong> Integrated the VS Code editor engine for JSON, SQL, and XML tools.</li>
+                                <li><strong>Syntax Highlighting:</strong> Added rich color support (Dark Mode).</li>
+                                <li><strong>XML Formatter:</strong> New tool to prettify and minify XML data.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Version 1.4.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.4.0</CardTitle>
+                            <Badge variant="secondary">Previous</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 23, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Developer Tools Suite 🛠️</h3>
+                            <p className="text-muted-foreground text-sm">A new set of offline-capable tools designed for software developers.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>JSON Formatter:</strong> Prettify, minify, and validate JSON syntax.</li>
+                                <li><strong>JWT Debugger:</strong> Inspect JSON Web Tokens without server calls.</li>
+                                <li><strong>SQL Formatter:</strong> Format complex SQL queries for better readability.</li>
+                                <li><strong>Diff Checker:</strong> Compare text blocks to spot differences instantly.</li>
+                                <li><strong>Base64 Converter:</strong> Encode and decode Base64 strings.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.3.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.3.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 23, 2025</span>
                     </CardHeader>
