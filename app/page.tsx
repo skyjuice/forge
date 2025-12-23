@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2 } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -53,7 +53,7 @@ export default function Page() {
                 {
                     title: "PDF Builder",
                     description: "Create PDFs from images seamlessly.",
-                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    icon: <Images className="h-10 w-10 text-primary" />,
                     href: "/tools/pdf",
                     cta: "Create PDF",
                 },
@@ -67,30 +67,37 @@ export default function Page() {
                 {
                     title: "Merge PDF",
                     description: "Combine multiple PDF files into one.",
-                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    icon: <Files className="h-10 w-10 text-primary" />,
                     href: "/tools/pdf-merger",
                     cta: "Merge PDF",
                 },
                 {
                     title: "Split PDF",
                     description: "Extract pages or split your PDF into multiple files.",
-                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    icon: <Ungroup className="h-10 w-10 text-primary" />,
                     href: "/tools/split-pdf",
                     cta: "Split PDF",
                 },
                 {
                     title: "Rotate PDF",
                     description: "Rotate specific pages or the entire document permanently.",
-                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    icon: <RotateCw className="h-10 w-10 text-primary" />,
                     href: "/tools/rotate-pdf",
                     cta: "Rotate PDF",
                 },
                 {
                     title: "Organize PDF",
                     description: "Sort, delete, and rotate pages of your PDF file.",
-                    icon: <FileType2 className="h-10 w-10 text-primary" />,
+                    icon: <LayoutGrid className="h-10 w-10 text-primary" />,
                     href: "/tools/organize-pdf",
                     cta: "Organize PDF",
+                },
+                {
+                    title: "PDF to JPG",
+                    description: "Convert PDF pages to high-quality JPG images.",
+                    icon: <FileImage className="h-10 w-10 text-primary" />,
+                    href: "/tools/pdf-to-jpg",
+                    cta: "Convert to JPG",
                 },
             ],
         },
