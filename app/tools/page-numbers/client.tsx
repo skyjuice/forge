@@ -89,7 +89,11 @@ export default function PageNumbersClient() {
 
         } catch (error: any) {
             console.error("Error adding page numbers:", error);
-            setError("Failed to process PDF. Please try a valid PDF file.");
+            if (error.message?.includes("encrypted")) {
+                setError("This PDF is password protected. Please unlock it before uploading.");
+            } else {
+                setError("Failed to process PDF. Please try a valid PDF file.");
+            }
         } finally {
             setLoading(false);
         }

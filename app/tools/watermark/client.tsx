@@ -22,6 +22,7 @@ export default function WatermarkClient() {
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     // Watermark Settings
     const [mode, setMode] = useState<"text" | "image">("text");
@@ -36,6 +37,7 @@ export default function WatermarkClient() {
         if (files.length > 0) {
             setFile(files[0]);
             setDownloadUrl(null);
+            setError(null);
         }
     };
 
@@ -121,8 +123,13 @@ export default function WatermarkClient() {
             const url = URL.createObjectURL(blob);
             setDownloadUrl(url);
 
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error adding watermark:", error);
+            if (error.message?.includes("encrypted")) {
+                setError("This PDF is password protected. Please unlock it before uploading.");
+            } else {
+                setError("Failed to create watermark. Please try a valid PDF.");
+            }
         } finally {
             setLoading(false);
         }
@@ -178,6 +185,12 @@ export default function WatermarkClient() {
                                     Remove File
                                 </Button>
                             </div>
+
+                            {error && (
+                                <div className="p-4 bg-destructive/10 text-destructive rounded-md text-sm flex items-center gap-2">
+                                    <X className="h-4 w-4" /> {error}
+                                </div>
+                            )}
 
                             <Tabs defaultValue="text" onValueChange={(v) => setMode(v as any)} className="w-full">
                                 <TabsList className="grid w-full grid-cols-2">

@@ -37,6 +37,7 @@ export default function ChangelogPage() {
                                 <li><strong>Security Headers:</strong> Implemented strict Content-Security-Policy and HSTS.</li>
                                 <li><strong>Scalable Architecture:</strong> Verified 100% client-side processing for heavy media tools.</li>
                                 <li><strong>Mobile Optimization:</strong> Fixed layout issues for Page Numbering and Developer tools.</li>
+                                <li><strong>Encrypted PDFs:</strong> Improved error handling for password-protected files.</li>
                             </ul>
                         </div>
                     </CardContent>

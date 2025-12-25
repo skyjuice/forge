@@ -12,10 +12,12 @@ export default function PdfMergerClient() {
     const [files, setFiles] = useState<File[]>([]);
     const [merging, setMerging] = useState(false);
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const handleFilesSelected = (newFiles: File[]) => {
         setFiles((prev) => [...prev, ...newFiles]);
         setDownloadUrl(null);
+        setError(null);
     };
 
     const removeFile = (index: number) => {
@@ -56,9 +58,13 @@ export default function PdfMergerClient() {
             const url = URL.createObjectURL(blob);
             setDownloadUrl(url);
 
-        } catch (error) {
+        } catch (error: any) {
             console.error("Merge failed:", error);
-            alert("Failed to merge PDFs. Please ensure all files are valid PDFs.");
+            if (error.message?.includes("encrypted")) {
+                setError("One or more PDFs are password protected. Please unlock them before merging.");
+            } else {
+                setError("Failed to merge PDFs. Please ensure all files are valid.");
+            }
         } finally {
             setMerging(false);
         }
@@ -131,6 +137,12 @@ export default function PdfMergerClient() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    )}
+
+                    {error && (
+                        <div className="p-4 bg-destructive/10 text-destructive rounded-md text-sm flex items-center gap-2">
+                            <X className="h-4 w-4" /> {error}
                         </div>
                     )}
 
