@@ -192,7 +192,10 @@ export default function WatermarkClient() {
                                 </div>
                             )}
 
-                            <Tabs defaultValue="text" onValueChange={(v) => setMode(v as any)} className="w-full">
+                            <Tabs defaultValue="text" onValueChange={(v) => {
+                                setMode(v as any);
+                                setDownloadUrl(null);
+                            }} className="w-full">
                                 <TabsList className="grid w-full grid-cols-2">
                                     <TabsTrigger value="text"><Type className="w-4 h-4 mr-2" /> Text Watermark</TabsTrigger>
                                     <TabsTrigger value="image"><ImageIcon className="w-4 h-4 mr-2" /> Image Watermark</TabsTrigger>
