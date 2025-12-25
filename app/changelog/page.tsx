@@ -43,7 +43,8 @@ export default function ChangelogPage() {
                         <div className="space-y-2">
                             <h3 className="font-semibold text-lg">Mobile Experience 📱</h3>
                             <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
-                                <li><strong>Sticky Action Bar:</strong> Primary actions (Compress, Merge) now stick to the bottom on mobile for easy access.</li>
+                                <li><strong>Sticky Action Bar:</strong> Primary actions (Download, Convert, Resize) now stick to the bottom on mobile for easy access across all tools.</li>
+                                <li><strong>Standardized Downloads:</strong> Replaced generic links with consistent, touch-friendly Button components.</li>
                                 <li><strong>Optimized Typography:</strong> Adjusted font sizes for better readability on small screens.</li>
                                 <li><strong>PWA Support:</strong> Added "Add to Home Screen" capability (manifest.json).</li>
                             </ul>

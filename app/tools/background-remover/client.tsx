@@ -245,6 +245,39 @@ export default function BackgroundRemoverClient() {
                     )}
                 </CardContent>
             </Card>
+
+            {(file || result) && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {result && downloadUrl ? (
+                        <Button className="w-full" asChild size="lg">
+                            <a href={downloadUrl} download={`removed_bg_${file?.name.split('.')[0]}.${bgOption === 'white' ? 'jpg' : 'png'}`}>
+                                <Download className="mr-2 h-4 w-4" />
+                                Download Image
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={handleRemoveBackground}
+                            disabled={processing || !file}
+                            className="w-full"
+                            size="lg"
+                        >
+                            {processing ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Processing...
+                                </>
+                            ) : (
+                                <>
+                                    <Eraser className="mr-2 h-4 w-4" />
+                                    Remove Background
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {(file || result) && <div className="h-24 md:hidden" />}
         </div>
     );
 }

@@ -300,6 +300,36 @@ export default function WatermarkClient() {
                     )}
                 </CardContent>
             </Card>
+            {file && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" size="lg" asChild>
+                            <a href={downloadUrl} download={`watermarked_${file.name.replace('.pdf', '')}.pdf`}>
+                                <Download className="mr-2 h-4 w-4" /> Download PDF
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            className="w-full"
+                            size="lg"
+                            onClick={handleProcess}
+                            disabled={loading || (mode === "image" && !imageFile)}
+                        >
+                            {loading ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Stamping...
+                                </>
+                            ) : (
+                                <>
+                                    Add Watermark <Stamp className="ml-2 h-4 w-4" />
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {file && <div className="h-24 md:hidden" />}
         </div>
     );
 }

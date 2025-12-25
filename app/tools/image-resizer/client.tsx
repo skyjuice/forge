@@ -258,6 +258,39 @@ export default function ImageResizerClient() {
                     )}
                 </CardContent>
             </Card>
+
+            {files.length > 0 && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" asChild size="lg">
+                            <a href={downloadUrl} download={downloadName}>
+                                <Download className="mr-2 h-4 w-4" />
+                                Download Images
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={handleResize}
+                            disabled={resizing || !width || !height}
+                            className="w-full"
+                            size="lg"
+                        >
+                            {resizing ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Resizing...
+                                </>
+                            ) : (
+                                <>
+                                    <Scaling className="mr-2 h-4 w-4" />
+                                    Resize Images
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {files.length > 0 && <div className="h-24 md:hidden" />}
         </div>
     );
 }

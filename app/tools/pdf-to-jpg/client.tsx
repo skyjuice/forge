@@ -272,6 +272,37 @@ export default function PdfToJpgClient() {
                     )}
                 </CardContent>
             </Card>
+
+            {file && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" size="lg" asChild>
+                            <a href={downloadUrl} download={`${file.name.replace('.pdf', '')}_images.zip`}>
+                                <Download className="mr-2 h-4 w-4" /> Download Images (ZIP)
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            className="w-full"
+                            size="lg"
+                            onClick={handleConvert}
+                            disabled={loading || selectedPages.size === 0}
+                        >
+                            {loading ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    {statusText} {progress > 0 && `(${progress}%)`}
+                                </>
+                            ) : (
+                                <>
+                                    Convert to JPG <FileImage className="ml-2 h-4 w-4" />
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {file && <div className="h-24 md:hidden" />}
         </div>
     );
 }

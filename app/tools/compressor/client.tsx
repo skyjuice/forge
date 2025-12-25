@@ -146,14 +146,15 @@ export default function CompressorClient() {
                         <div className="p-4 bg-primary/10 border border-primary/20 rounded-md flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-primary" />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-primary">Compression Complete!</p>
-                                <a
-                                    href={downloadUrl}
-                                    download={`compressed_${file?.name.split('.')[0]}.mp4`}
-                                    className="text-sm text-foreground/80 hover:text-foreground hover:underline flex items-center gap-1 mt-1"
-                                >
-                                    <Minimize2 className="h-4 w-4" /> Download Compressed File
-                                </a>
+                                <p className="text-sm font-medium text-primary mb-2">Compression Complete!</p>
+                                <Button asChild variant="outline" className="w-full sm:w-auto border-primary/20 hover:bg-primary/20">
+                                    <a
+                                        href={downloadUrl}
+                                        download={`compressed_${file?.name.split('.')[0]}.mp4`}
+                                    >
+                                        <Minimize2 className="mr-2 h-4 w-4" /> Download Compressed File
+                                    </a>
+                                </Button>
                             </div>
                         </div>
                     )}
@@ -180,6 +181,41 @@ export default function CompressorClient() {
                     </p>
                 </CardContent>
             </Card>
+
+            {file && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" size="lg" asChild>
+                            <a
+                                href={downloadUrl}
+                                download={`compressed_${file?.name.split('.')[0]}.mp4`}
+                            >
+                                <Minimize2 className="mr-2 h-4 w-4" /> Download Video
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            className="w-full"
+                            size="lg"
+                            onClick={handleCompress}
+                            disabled={!file || loading || isEngineLoading}
+                        >
+                            {loading || isEngineLoading ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Compressing...
+                                </>
+                            ) : (
+                                <>
+                                    <Minimize2 className="mr-2 h-4 w-4" />
+                                    Compress Media
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {file && <div className="h-24 md:hidden" />}
         </div>
     );
 }

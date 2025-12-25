@@ -272,6 +272,37 @@ export default function JpgToPdfClient() {
                     )}
                 </CardContent>
             </Card>
+
+            {images.length > 0 && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" size="lg" asChild>
+                            <a href={downloadUrl} download="converted.pdf">
+                                <Download className="mr-2 h-4 w-4" /> Download PDF
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            className="w-full"
+                            size="lg"
+                            onClick={handleCreatePdf}
+                            disabled={loading || images.length === 0}
+                        >
+                            {loading ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Creating PDF...
+                                </>
+                            ) : (
+                                <>
+                                    Convert to PDF <ArrowRight className="ml-2 h-4 w-4" />
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+            {images.length > 0 && <div className="h-24 md:hidden" />}
         </div>
     );
 }
