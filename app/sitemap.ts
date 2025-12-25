@@ -21,6 +21,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/tools/pdf-to-jpg',
         '/tools/page-numbers',
         '/tools/watermark',
+        // AI Tools
+        '/tools/ai/summarizer',
+        '/tools/ai/translator',
+        '/tools/ai/sentiment',
+        // Image Tools
+        '/tools/image-converter',
+        // Developer Tools
+        '/tools/dev/json-formatter',
+        '/tools/dev/xml-formatter',
+        '/tools/dev/base64',
+        '/tools/dev/jwt-debugger',
+        '/tools/dev/sql-formatter',
+        '/tools/dev/diff-checker',
     ];
 
     return routes.map((route) => ({

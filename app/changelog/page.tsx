@@ -12,12 +12,43 @@ export default function ChangelogPage() {
 
             <div className="space-y-8">
 
+
+                {/* Version 1.7.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.7.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 26, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">AI Power Tools & Brand Refresh 🤖✨</h3>
+                            <p className="text-muted-foreground text-sm">Launched full suite of offline AI tools and refreshed brand identity.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>AI Summarizer:</strong> Summarize long text instantly using local machine learning.</li>
+                                <li><strong>AI Translator:</strong> Private, fast, offline translation for multiple languages.</li>
+                                <li><strong>Sentiment Analysis:</strong> Real-time emotion detection for text.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Security & Infrastructure</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Strict CSP:</strong> Hardened security with strict Content-Security-Policy to prevent XSS.</li>
+                                <li><strong>AI Worker Fix:</strong> Resolved CDN loading issues for AI models using secure proxy settings.</li>
+                                <li><strong>Assets:</strong> Fixed 404 errors for icons and deployed new SVG brand logo.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.6.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.6.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 25, 2025</span>
                     </CardHeader>
