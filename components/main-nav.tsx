@@ -135,32 +135,34 @@ export function MainNav() {
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right">
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                             <SheetHeader>
-                                <SheetTitle className="text-left font-bold">IbuForge</SheetTitle>
+                                <SheetTitle className="text-left font-bold text-xl pl-1">IbuForge</SheetTitle>
                             </SheetHeader>
-                            <div className="flex flex-col space-y-4 py-4">
+                            <div className="flex flex-col gap-6 py-6">
                                 <Link
                                     href="/"
                                     onClick={() => setIsOpen(false)}
-                                    className="text-sm font-medium transition-colors hover:text-primary"
+                                    className="text-base font-medium transition-colors hover:text-primary pl-1"
                                 >
                                     Home
                                 </Link>
                                 <Accordion type="single" collapsible className="w-full">
                                     {navConfig.map((group) => (
-                                        <AccordionItem key={group.title} value={group.title}>
-                                            <AccordionTrigger className="text-sm">{group.title}</AccordionTrigger>
+                                        <AccordionItem key={group.title} value={group.title} className="border-b-0">
+                                            <AccordionTrigger className="text-base py-3 hover:no-underline px-1 hover:bg-muted/50 rounded-md">
+                                                {group.title}
+                                            </AccordionTrigger>
                                             <AccordionContent>
-                                                <div className="flex flex-col space-y-2 pl-4">
+                                                <div className="flex flex-col space-y-3 pl-4 pt-2 pb-2">
                                                     {group.items.map((item) => (
                                                         <Link
                                                             key={item.href}
                                                             href={item.href}
                                                             onClick={() => setIsOpen(false)}
                                                             className={cn(
-                                                                "text-sm transition-colors hover:text-primary py-1",
-                                                                pathname === item.href ? "text-foreground font-medium" : "text-muted-foreground"
+                                                                "text-sm transition-colors hover:text-primary py-2 px-2 rounded-md hover:bg-muted/50",
+                                                                pathname === item.href ? "bg-muted font-medium text-primary" : "text-muted-foreground"
                                                             )}
                                                         >
                                                             {item.title}
@@ -174,7 +176,7 @@ export function MainNav() {
                                 <Link
                                     href="/changelog"
                                     onClick={() => setIsOpen(false)}
-                                    className="text-sm font-medium transition-colors hover:text-primary py-2 border-t"
+                                    className="text-base font-medium transition-colors hover:text-primary pl-1"
                                 >
                                     Changelog
                                 </Link>
