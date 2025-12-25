@@ -59,6 +59,14 @@ const navConfig = [
             { title: "Compressor", href: "/tools/compressor" },
         ],
     },
+    {
+        title: "AI Tools",
+        items: [
+            { title: "Summarizer", href: "/tools/ai/summarizer" },
+            { title: "Translator", href: "/tools/ai/translator" },
+            { title: "Sentiment", href: "/tools/ai/sentiment" },
+        ],
+    },
 
     {
         title: "Developers",

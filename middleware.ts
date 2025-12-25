@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     // We need to allow blobs for FFmpeg/Workers and unsafe-eval for Wasm/Monaco
     const csp = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; 
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com blob:; 
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self' data:;
