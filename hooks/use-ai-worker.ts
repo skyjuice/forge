@@ -33,6 +33,14 @@ export function useAIWorker(workerPath: string = '/ai-worker.js') {
                     setStatus({ status: 'error', error });
                 }
             });
+
+            workerRef.current.addEventListener('error', (err) => {
+                console.error("Worker initialization error:", err);
+                setStatus({
+                    status: 'error',
+                    error: `Worker Error: ${err.message}. Check console for details.`
+                });
+            });
         }
 
         return () => {

@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
     style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
     img-src 'self' blob: data:;
     font-src 'self' data:;
-    worker-src 'self' blob:;
+    worker-src 'self' blob: https://cdn.jsdelivr.net https://unpkg.com;
     connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://huggingface.co https://*.huggingface.co blob: data:;
     media-src 'self' blob: data:;
     object-src 'none';
