@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -91,6 +91,13 @@ export default function Page() {
                     icon: <Sparkles className="h-10 w-10 text-primary" />,
                     href: "/tools/ai/summarizer",
                     cta: "Summarize Text",
+                },
+                {
+                    title: "AI Transcriber",
+                    description: "Convert audio to text privately.",
+                    icon: <Mic className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/transcriber",
+                    cta: "Transcribe Audio",
                 },
                 {
                     title: "AI Translator",

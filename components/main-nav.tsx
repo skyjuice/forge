@@ -63,6 +63,7 @@ const navConfig = [
         title: "AI Tools",
         items: [
             { title: "Summarizer", href: "/tools/ai/summarizer" },
+            { title: "Transcriber", href: "/tools/ai/transcriber" },
             { title: "Translator", href: "/tools/ai/translator" },
             { title: "Sentiment", href: "/tools/ai/sentiment" },
         ],

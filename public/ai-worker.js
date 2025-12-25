@@ -46,6 +46,9 @@ self.addEventListener('message', async (event) => {
             } else {
                 result = await classifier(content);
             }
+        } else if (task === 'automatic-speech-recognition') {
+            // content can be a URL or audio data
+            result = await classifier(content);
         }
 
         self.postMessage({ status: 'complete', output: result });

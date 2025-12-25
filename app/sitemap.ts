@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/tools/watermark',
         // AI Tools
         '/tools/ai/summarizer',
+        '/tools/ai/transcriber',
         '/tools/ai/translator',
         '/tools/ai/sentiment',
         // Image Tools
