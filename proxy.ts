@@ -15,7 +15,7 @@ export function proxy(request: NextRequest) {
     img-src 'self' blob: data:;
     font-src 'self' data:;
     worker-src 'self' blob: https://cdn.jsdelivr.net https://unpkg.com;
-    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://huggingface.co https://*.huggingface.co blob: data:;
+    connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://huggingface.co https://*.huggingface.co https://hf.co https://*.hf.co blob: data:;
     media-src 'self' blob: data:;
     object-src 'none';
     frame-ancestors 'none';
