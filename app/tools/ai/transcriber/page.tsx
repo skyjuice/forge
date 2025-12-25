@@ -29,13 +29,36 @@ export default function TranscriberPage() {
         }
     };
 
-    const handleTranscribe = () => {
-        if (!file || !audioUrl) return;
+    const handleTranscribe = async () => {
+        if (!file) return;
         setTranscript("");
+        toast.info("Decoding audio (this may take a moment)...");
 
-        // Use 'Xenova/whisper-tiny' for speed/size balance in browser
-        // Pass the Blob URL directly; transformers.js pipeline handles fetching/decoding
-        process("automatic-speech-recognition", "Xenova/whisper-tiny", audioUrl);
+        try {
+            const arrayBuffer = await file.arrayBuffer();
+
+            // Standard AudioContext to decode the file
+            // Note: We use the prefix for legacy Safari if needed, though most support AudioContext now
+            const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+
+            // OfflineAudioContext to resample to 16000Hz (Whisper requirement)
+            const offlineCtx = new OfflineAudioContext(1, audioBuffer.duration * 16000, 16000);
+            const source = offlineCtx.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(offlineCtx.destination);
+            source.start();
+
+            const resampledBuffer = await offlineCtx.startRendering();
+            const pcmData = resampledBuffer.getChannelData(0);
+
+            // Send raw float data to worker
+            process("automatic-speech-recognition", "Xenova/whisper-tiny", pcmData);
+
+        } catch (e) {
+            console.error("Audio decoding failed", e);
+            toast.error("Failed to decode audio. Please try another file.");
+        }
     };
 
     const handleCopy = () => {
