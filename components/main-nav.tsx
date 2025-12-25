@@ -135,7 +135,7 @@ export function MainNav() {
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px] overflow-y-auto">
                             <SheetHeader>
                                 <SheetTitle className="text-left font-bold text-xl pl-1">IbuForge</SheetTitle>
                             </SheetHeader>
