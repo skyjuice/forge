@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Dropzone } from "@/components/ui/dropzone";
-import { Loader2, Upload, CheckCircle, FileMusic, X, AlertTriangle } from "lucide-react";
+import { Loader2, Upload, CheckCircle, FileMusic, X, AlertTriangle, Download } from "lucide-react";
 import { useFFmpeg } from "@/hooks/use-ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 
@@ -136,14 +136,15 @@ export default function ConverterClient() {
                         <div className="p-4 bg-primary/10 border border-primary/20 rounded-md flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-primary" />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-primary">Conversion Complete!</p>
-                                <a
-                                    href={downloadUrl}
-                                    download={`converted_${file?.name.split('.')[0]}.${format}`}
-                                    className="text-sm text-foreground/80 hover:text-foreground hover:underline"
-                                >
-                                    Click here to download your file
-                                </a>
+                                <p className="text-sm font-medium text-primary mb-2">Conversion Complete!</p>
+                                <Button asChild size="sm" variant="default" className="w-full sm:w-auto">
+                                    <a
+                                        href={downloadUrl}
+                                        download={`converted_${file?.name.split('.')[0]}.${format}`}
+                                    >
+                                        <Upload className="mr-2 h-4 w-4 rotate-180" /> Download {format.toUpperCase()}
+                                    </a>
+                                </Button>
                             </div>
                         </div>
                     )}
@@ -171,6 +172,30 @@ export default function ConverterClient() {
                     </p>
                 </CardContent>
             </Card>
+
+            {file && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    <Button
+                        onClick={handleConvert}
+                        disabled={!file || loading || isEngineLoading}
+                        className="w-full"
+                        size="lg"
+                    >
+                        {loading || isEngineLoading ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                {isEngineLoading ? "Loading..." : "Converting..."}
+                            </>
+                        ) : (
+                            <>
+                                <Upload className="mr-2 h-4 w-4" />
+                                Convert
+                            </>
+                        )}
+                    </Button>
+                </div>
+            )}
+            {file && <div className="h-24 md:hidden" />}
         </div>
     );
 }
