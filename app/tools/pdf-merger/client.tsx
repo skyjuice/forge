@@ -182,6 +182,30 @@ export default function PdfMergerClient() {
                     </Button>
                 </CardContent>
             </Card>
+
+            {files.length > 0 && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    <Button
+                        onClick={handleMerge}
+                        disabled={files.length < 2 || merging}
+                        className="w-full"
+                        size="lg"
+                    >
+                        {merging ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Merging PDFs...
+                            </>
+                        ) : (
+                            <>
+                                <FileType2 className="mr-2 h-4 w-4" />
+                                Merge {files.length} Files
+                            </>
+                        )}
+                    </Button>
+                </div>
+            )}
+            {files.length > 0 && <div className="h-24 md:hidden" />}
         </div>
     );
 }

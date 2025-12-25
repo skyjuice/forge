@@ -40,6 +40,14 @@ export default function ChangelogPage() {
                                 <li><strong>Encrypted PDFs:</strong> Improved error handling for password-protected files.</li>
                             </ul>
                         </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Mobile Experience 📱</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Sticky Action Bar:</strong> Primary actions (Compress, Merge) now stick to the bottom on mobile for easy access.</li>
+                                <li><strong>Optimized Typography:</strong> Adjusted font sizes for better readability on small screens.</li>
+                                <li><strong>PWA Support:</strong> Added "Add to Home Screen" capability (manifest.json).</li>
+                            </ul>
+                        </div>
                     </CardContent>
                 </Card>
 

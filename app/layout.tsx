@@ -66,6 +66,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

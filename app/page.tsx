@@ -196,8 +196,8 @@ export default function Page() {
     return (
         <div className="space-y-12">
             <section className="space-y-4">
-                <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">IbuForge</h1>
-                <p className="text-xl text-muted-foreground">
+                <h1 className="text-3xl font-extrabold tracking-tight lg:text-5xl">IbuForge</h1>
+                <p className="text-lg lg:text-xl text-muted-foreground">
                     Internal tools for your daily workflows.
                 </p>
             </section>

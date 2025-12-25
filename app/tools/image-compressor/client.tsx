@@ -207,6 +207,42 @@ export default function ImageCompressorClient() {
                     )}
                 </CardContent>
             </Card>
+
+            {/* Mobile Sticky Action Bar */}
+            {files.length > 0 && (
+                <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-md border-t md:hidden z-50">
+                    {downloadUrl ? (
+                        <Button className="w-full" asChild size="lg">
+                            <a href={downloadUrl} download={files.length === 1 ? `min_${files[0].name}` : `compressed_images.zip`}>
+                                <Download className="mr-2 h-4 w-4" />
+                                Download Images
+                            </a>
+                        </Button>
+                    ) : (
+                        <Button
+                            onClick={handleCompress}
+                            disabled={compressing}
+                            className="w-full"
+                            size="lg"
+                        >
+                            {compressing ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Compressing...
+                                </>
+                            ) : (
+                                <>
+                                    <Minimize2 className="mr-2 h-4 w-4" />
+                                    Compress Images
+                                </>
+                            )}
+                        </Button>
+                    )}
+                </div>
+            )}
+
+            {/* Spacer for mobile sticking bar */}
+            {files.length > 0 && <div className="h-24 md:hidden" />}
         </div>
     );
 }
