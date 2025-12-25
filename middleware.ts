@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
     const csp = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com blob:; 
-    style-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
     img-src 'self' blob: data:;
     font-src 'self' data:;
     worker-src 'self' blob:;

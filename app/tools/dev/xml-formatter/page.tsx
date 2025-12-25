@@ -77,21 +77,23 @@ export default function XmlFormatterPage() {
                         <CardTitle className="text-sm font-medium">Input XML</CardTitle>
                     </CardHeader>
                     <CardContent className="flex-1 p-0 relative h-full">
-                        <Editor
-                            height="100%"
-                            defaultLanguage="xml"
-                            theme="vs-dark"
-                            value={input}
-                            onChange={(value) => setInput(value || "")}
-                            options={{
-                                minimap: { enabled: false },
-                                fontSize: 13,
-                                wordWrap: 'on',
-                                automaticLayout: true,
-                                padding: { top: 16, bottom: 16 },
-                                scrollBeyondLastLine: false,
-                            }}
-                        />
+                        <div className="absolute inset-0">
+                            <Editor
+                                height="100%"
+                                defaultLanguage="xml"
+                                theme="vs-dark"
+                                value={input}
+                                onChange={(value) => setInput(value || "")}
+                                options={{
+                                    minimap: { enabled: false },
+                                    fontSize: 13,
+                                    wordWrap: 'on',
+                                    automaticLayout: true,
+                                    padding: { top: 16, bottom: 16 },
+                                    scrollBeyondLastLine: false,
+                                }}
+                            />
+                        </div>
                         {error && (
                             <div className="absolute bottom-4 left-4 right-4 bg-destructive/10 text-destructive text-sm p-3 rounded-md border border-destructive/20 flex items-start gap-2 z-10 backdrop-blur-sm">
                                 <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
