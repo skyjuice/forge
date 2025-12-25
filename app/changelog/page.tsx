@@ -33,11 +33,11 @@ export default function ChangelogPage() {
                             </ul>
                         </div>
                         <div className="space-y-2">
-                            <h3 className="font-semibold text-lg">Security & Infrastructure</h3>
+                            <h3 className="font-semibold text-lg">UX Polish & Navigation 📱</h3>
                             <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
-                                <li><strong>Strict CSP:</strong> Hardened security with strict Content-Security-Policy to prevent XSS.</li>
-                                <li><strong>AI Worker Fix:</strong> Resolved CDN loading issues for AI models using secure proxy settings.</li>
-                                <li><strong>Assets:</strong> Fixed 404 errors for icons and deployed new SVG brand logo.</li>
+                                <li><strong>Mobile Menu:</strong> Improved mobile navigation with better spacing, scrolling support, and larger touch targets.</li>
+                                <li><strong>Dashboard:</strong> Rearranged tool categories for better workflow access (Documents > AI > Images).</li>
+                                <li><strong>Scrolling:</strong> Fixed scrollability issues in the mobile drawer menu.</li>
                             </ul>
                         </div>
                     </CardContent>
