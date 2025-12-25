@@ -20,33 +20,6 @@ interface ToolGroup {
 export default function Page() {
     const groups: ToolGroup[] = [
         {
-            id: "ai",
-            label: "AI Power Tools",
-            tools: [
-                {
-                    title: "AI Summarizer",
-                    description: "Summarize long text instantly.",
-                    icon: <Sparkles className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/summarizer",
-                    cta: "Summarize Text",
-                },
-                {
-                    title: "AI Translator",
-                    description: "Translate text privately on-device.",
-                    icon: <Languages className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/translator",
-                    cta: "Translate Text",
-                },
-                {
-                    title: "Sentiment Analysis",
-                    description: "Detect emotion and tone in text.",
-                    icon: <Smile className="h-10 w-10 text-primary" />,
-                    href: "/tools/ai/sentiment",
-                    cta: "Analyze Sentiment",
-                },
-            ],
-        },
-        {
             id: "documents",
             label: "Document Tools",
             tools: [
@@ -105,6 +78,33 @@ export default function Page() {
                     icon: <Stamp className="h-10 w-10 text-primary" />,
                     href: "/tools/watermark",
                     cta: "Watermark PDF",
+                },
+            ],
+        },
+        {
+            id: "ai",
+            label: "AI Power Tools",
+            tools: [
+                {
+                    title: "AI Summarizer",
+                    description: "Summarize long text instantly.",
+                    icon: <Sparkles className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/summarizer",
+                    cta: "Summarize Text",
+                },
+                {
+                    title: "AI Translator",
+                    description: "Translate text privately on-device.",
+                    icon: <Languages className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/translator",
+                    cta: "Translate Text",
+                },
+                {
+                    title: "Sentiment Analysis",
+                    description: "Detect emotion and tone in text.",
+                    icon: <Smile className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/sentiment",
+                    cta: "Analyze Sentiment",
                 },
             ],
         },
