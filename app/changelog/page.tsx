@@ -36,7 +36,7 @@ export default function ChangelogPage() {
                             <h3 className="font-semibold text-lg">UX Polish & Navigation 📱</h3>
                             <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
                                 <li><strong>Mobile Menu:</strong> Improved mobile navigation with better spacing, scrolling support, and larger touch targets.</li>
-                                <li><strong>Dashboard:</strong> Rearranged tool categories for better workflow access (Documents > AI > Images).</li>
+                                <li><strong>Dashboard:</strong> Rearranged tool categories for better workflow access (Documents &rarr; AI &rarr; Images).</li>
                                 <li><strong>Scrolling:</strong> Fixed scrollability issues in the mobile drawer menu.</li>
                             </ul>
                         </div>
