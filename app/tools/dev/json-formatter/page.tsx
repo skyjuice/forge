@@ -49,7 +49,7 @@ export default function JsonFormatterPage() {
     };
 
     return (
-        <div className="container mx-auto max-w-[1400px] py-8 space-y-8 h-[calc(100vh-100px)] flex flex-col">
+        <div className="container mx-auto max-w-[1400px] py-8 space-y-8 lg:h-[calc(100dvh-100px)] h-auto flex flex-col">
             <div className="space-y-2 shrink-0">
                 <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
                     <FileJson className="h-8 w-8 text-primary" />
@@ -63,7 +63,7 @@ export default function JsonFormatterPage() {
 
             <div className="grid lg:grid-cols-2 gap-4 flex-1 min-h-0">
                 {/* Input */}
-                <Card className="flex flex-col h-full border-muted-foreground/20 shadow-sm overflow-hidden">
+                <Card className="flex flex-col lg:h-full h-[500px] border-muted-foreground/20 shadow-sm overflow-hidden">
                     <CardHeader className="py-3 px-4 bg-muted/30 border-b flex flex-row items-center justify-between space-y-0">
                         <CardTitle className="text-sm font-medium">Input JSON</CardTitle>
                     </CardHeader>
@@ -93,7 +93,7 @@ export default function JsonFormatterPage() {
                 </Card>
 
                 {/* Output */}
-                <Card className="flex flex-col h-full border-muted-foreground/20 shadow-sm overflow-hidden">
+                <Card className="flex flex-col lg:h-full h-[500px] border-muted-foreground/20 shadow-sm overflow-hidden">
                     <CardHeader className="py-3 px-4 bg-muted/30 border-b flex flex-row items-center justify-between space-y-0">
                         <CardTitle className="text-sm font-medium">Output</CardTitle>
                         <div className="flex items-center gap-2">

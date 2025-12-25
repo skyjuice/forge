@@ -29,8 +29,8 @@ export default function DiffCheckerPage() {
                 </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-4 h-[400px]">
-                <Card className="flex flex-col h-full">
+            <div className="grid lg:grid-cols-2 gap-4 lg:h-[600px] h-auto">
+                <Card className="flex flex-col lg:h-full h-[300px]">
                     <CardHeader className="py-2 px-4 border-b bg-muted/20">
                         <CardTitle className="text-sm font-medium">Original Text</CardTitle>
                     </CardHeader>
@@ -43,7 +43,7 @@ export default function DiffCheckerPage() {
                         />
                     </CardContent>
                 </Card>
-                <Card className="flex flex-col h-full">
+                <Card className="flex flex-col lg:h-full h-[300px]">
                     <CardHeader className="py-2 px-4 border-b bg-muted/20">
                         <CardTitle className="text-sm font-medium">Modified Text</CardTitle>
                     </CardHeader>

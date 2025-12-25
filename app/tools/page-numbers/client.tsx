@@ -14,24 +14,26 @@ type Position =
     | "bottom-left" | "bottom-center" | "bottom-right";
 
 export default function PageNumbersClient() {
+
     const [file, setFile] = useState<File | null>(null);
     const [loading, setLoading] = useState(false);
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
     const [position, setPosition] = useState<Position>("bottom-center");
     const [pageCount, setPageCount] = useState<number | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const handleFileSelected = (files: File[]) => {
         if (files.length > 0) {
             setFile(files[0]);
             setDownloadUrl(null);
-            // Optional: Load PDF to get page count preview if needed, 
-            // but for now we just show the filename.
+            setError(null);
         }
     };
 
     const handleProcess = async () => {
         if (!file) return;
         setLoading(true);
+        setError(null);
 
         try {
             const arrayBuffer = await file.arrayBuffer();
@@ -39,7 +41,10 @@ export default function PageNumbersClient() {
             const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
             const pages = pdfDoc.getPages();
-            const totalPages = pages.length;
+
+            if (pages.length === 0) {
+                throw new Error("The PDF has no pages.");
+            }
 
             pages.forEach((page, index) => {
                 const { width, height } = page.getSize();
@@ -82,8 +87,9 @@ export default function PageNumbersClient() {
             const url = URL.createObjectURL(blob);
             setDownloadUrl(url);
 
-        } catch (error) {
+        } catch (error: any) {
             console.error("Error adding page numbers:", error);
+            setError("Failed to process PDF. Please try a valid PDF file.");
         } finally {
             setLoading(false);
         }
@@ -93,7 +99,7 @@ export default function PageNumbersClient() {
         <button
             onClick={() => setPosition(pos)}
             className={cn(
-                "h-20 w-full border rounded-md flex items-center justify-center hover:bg-muted transition-colors relative",
+                "h-16 sm:h-20 w-full border rounded-md flex items-center justify-center hover:bg-muted transition-colors relative touch-manipulation",
                 position === pos ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border"
             )}
         >
@@ -108,7 +114,7 @@ export default function PageNumbersClient() {
     );
 
     return (
-        <div className="container max-w-4xl mx-auto py-12 px-4 space-y-8">
+        <div className="container max-w-4xl mx-auto py-8 sm:py-12 px-4 space-y-8">
             <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold tracking-tight">Add Page Numbers</h1>
                 <p className="text-muted-foreground">
@@ -145,6 +151,12 @@ export default function PageNumbersClient() {
                                 </Button>
                             </div>
 
+                            {error && (
+                                <div className="p-4 bg-destructive/10 text-destructive rounded-md text-sm flex items-center gap-2">
+                                    <X className="h-4 w-4" /> {error}
+                                </div>
+                            )}
+
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-4">
                                     <Label className="text-base">Position</Label>
@@ -162,7 +174,7 @@ export default function PageNumbersClient() {
                                 </div>
 
                                 <div className="space-y-4 border rounded-lg p-6 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900/50">
-                                    <div className="w-[140px] h-[200px] bg-white border shadow-sm relative relative">
+                                    <div className="w-[120px] h-[170px] sm:w-[140px] sm:h-[200px] bg-white border shadow-sm relative transition-all">
                                         <div className="absolute inset-4 border-dashed border border-slate-200"></div>
                                         {/* Preview Dot */}
                                         <div className={cn(
@@ -180,7 +192,7 @@ export default function PageNumbersClient() {
 
                             {downloadUrl ? (
                                 <Button className="w-full" size="lg" asChild>
-                                    <a href={downloadUrl} download={`numbered_${file.name}`}>
+                                    <a href={downloadUrl} download={`numbered_${file.name.replace('.pdf', '')}.pdf`}>
                                         <Download className="mr-2 h-4 w-4" /> Download Numbered PDF
                                     </a>
                                 </Button>

@@ -9,7 +9,38 @@ export default function ChangelogPage() {
                 <p className="text-xl text-muted-foreground">all notable changes to IbuForge.</p>
             </div>
 
+
             <div className="space-y-8">
+
+                {/* Version 1.6.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.6.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 25, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">AI Power Tools & Security Hardening 🤖</h3>
+                            <p className="text-muted-foreground text-sm">Introduced local, privacy-focused AI tools and hardened security.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>AI Summarizer:</strong> Summarize long texts client-side without data leaving your browser.</li>
+                                <li><strong>AI Translator:</strong> Translate text between languages privately using Transformers.js.</li>
+                                <li><strong>Sentiment Analysis:</strong> Detect positive or negative tones in text instantly.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Security & Performance</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Security Headers:</strong> Implemented strict Content-Security-Policy and HSTS.</li>
+                                <li><strong>Scalable Architecture:</strong> Verified 100% client-side processing for heavy media tools.</li>
+                                <li><strong>Mobile Optimization:</strong> Fixed layout issues for Page Numbering and Developer tools.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
 
 
                 {/* Version 1.5.0 */}
@@ -17,7 +48,7 @@ export default function ChangelogPage() {
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.5.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 23, 2025</span>
                     </CardHeader>
