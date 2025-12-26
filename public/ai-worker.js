@@ -56,10 +56,10 @@ self.addEventListener('message', async (event) => {
             result = await classifier(content);
         } else if (task === 'inpainting') {
             // content: { image: string|Blob, mask: string|Blob }
-            // For now, image-to-image pipelines usually just take the image. 
-            // True inpainting models (InpaintPipeline) aren't standard in version 2.17 yet or use 'img2img'.
-            // If the model supports masking, we pass it.
-            result = await classifier(content.image, { mask_image: content.mask });
+            // For the current fallback model (Swin2SR), passing a mask in the options causes an ORT crash
+            // because the model doesn't expect it.
+            // We will just pass the image. (This means it acts as an image enhancer/upscaler for now).
+            result = await classifier(content.image);
         }
 
         self.postMessage({ status: 'complete', output: result });
