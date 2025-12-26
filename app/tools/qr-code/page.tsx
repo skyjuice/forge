@@ -21,6 +21,8 @@ export default function QRCodePage() {
     const [qrSize, setQrSize] = useState(256);
     const [fgColor, setFgColor] = useState("#000000");
     const [bgColor, setBgColor] = useState("#ffffff");
+    const [logoUrl, setLogoUrl] = useState<string | null>(null);
+    const [logoSize, setLogoSize] = useState(24);
     const canvasRef = useRef<HTMLDivElement>(null);
 
     // Scanner State
@@ -75,6 +77,17 @@ export default function QRCodePage() {
             }
         };
     }, [mode]);
+
+    const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                setLogoUrl(event.target?.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
 
     const downloadQRCode = (extension: "png" | "svg") => {
         if (!canvasRef.current) return;
