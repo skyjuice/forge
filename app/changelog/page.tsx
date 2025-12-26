@@ -13,12 +13,41 @@ export default function ChangelogPage() {
             <div className="space-y-8">
 
 
+                {/* Version 1.8.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.8.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 26, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Visual & Audio Intelligence 🧠</h3>
+                            <p className="text-muted-foreground text-sm">Empowering you with new visual and audio processing capabilities.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>QR Code Studio:</strong> Generate custom QR codes with logo overlays, colors, and high error correction.</li>
+                                <li><strong>Image to Text (OCR):</strong> Extract text from images instantly using Tesseract.js (Client-side).</li>
+                                <li><strong>AI Transcriber:</strong> Convert audio/video files to text privately in your browser using OpenAI Whisper.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Enhancements</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Dynamic QR Logic:</strong> QR codes now intelligently "excavate" pixels around logos for better readability.</li>
+                                <li><strong>Performance:</strong> Optimized worker threads for OCR and Transcription tasks.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.7.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.7.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 26, 2025</span>
                     </CardHeader>

@@ -18,7 +18,9 @@ export default function QRCodePage() {
 
     // Generator State
     const [qrValue, setQrValue] = useState("https://ibuforge.com");
+
     const [qrSize, setQrSize] = useState(256);
+    const [qrLevel, setQrLevel] = useState<"L" | "M" | "Q" | "H">("H");
     const [fgColor, setFgColor] = useState("#000000");
     const [bgColor, setBgColor] = useState("#ffffff");
     const [logoUrl, setLogoUrl] = useState<string | null>(null);
@@ -45,7 +47,7 @@ export default function QRCodePage() {
                     const scanner = new Html5QrcodeScanner(
                         "reader",
                         config,
-                         /* verbose= */ false
+                        /* verbose= */ false
                     );
 
                     scanner.render(
@@ -157,6 +159,19 @@ export default function QRCodePage() {
                                             step={16}
                                         />
                                     </div>
+                                    <div className="space-y-2">
+                                        <Label>Error Correction</Label>
+                                        <select
+                                            className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                            value={qrLevel}
+                                            onChange={(e) => setQrLevel(e.target.value as any)}
+                                        >
+                                            <option value="L">Low (7%)</option>
+                                            <option value="M">Medium (15%)</option>
+                                            <option value="Q">Quartile (25%)</option>
+                                            <option value="H">High (30%)</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="space-y-2">
@@ -194,6 +209,34 @@ export default function QRCodePage() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <div className="space-y-2">
+                                    <Label>Logo Overlay (Optional)</Label>
+                                    <div className="flex gap-2 items-center">
+                                        <Input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={handleLogoUpload}
+                                        />
+                                        {logoUrl && (
+                                            <Button variant="ghost" size="icon" onClick={() => setLogoUrl(null)} title="Remove Logo">
+                                                <X className="h-4 w-4" />
+                                            </Button>
+                                        )}
+                                    </div>
+                                    {logoUrl && (
+                                        <div className="space-y-2 pt-2">
+                                            <Label className="text-xs">Logo Size ({logoSize}px)</Label>
+                                            <Slider
+                                                value={[logoSize]}
+                                                onValueChange={(v) => setLogoSize(v[0])}
+                                                min={16}
+                                                max={128}
+                                                step={4}
+                                            />
+                                        </div>
+                                    )}
+                                </div>
                             </CardContent>
                         </Card>
 
@@ -203,27 +246,39 @@ export default function QRCodePage() {
                             </CardHeader>
                             <CardContent className="flex-1 flex flex-col items-center justify-center gap-8 min-h-[300px]">
                                 <div className="p-4 border rounded-lg bg-white/5" ref={canvasRef}>
-                                    {/* Render both but hide one to enable download of specific format if needed */}
-                                    {/* Actually common practice is just use Canvas for PNG and SVG for SVG download */}
-                                    {/* qrcode.react renders one or the other based on prop */}
-
                                     {/* Visual Preview */}
                                     <QRCodeCanvas
+                                        key={`${qrValue}-${qrSize}-${qrLevel}-${fgColor}-${bgColor}-${logoUrl}-${logoSize}`}
                                         value={qrValue}
                                         size={qrSize}
+                                        level={qrLevel}
                                         fgColor={fgColor}
                                         bgColor={bgColor}
                                         includeMargin
+                                        imageSettings={logoUrl ? {
+                                            src: logoUrl,
+                                            height: logoSize,
+                                            width: logoSize,
+                                            excavate: true,
+                                        } : undefined}
                                     />
 
                                     {/* Hidden SVG for download purposes */}
                                     <div className="hidden">
                                         <QRCodeSVG
+                                            key={`${qrValue}-${qrSize}-${qrLevel}-${fgColor}-${bgColor}-${logoUrl}-${logoSize}`}
                                             value={qrValue}
                                             size={qrSize}
+                                            level={qrLevel}
                                             fgColor={fgColor}
                                             bgColor={bgColor}
                                             includeMargin
+                                            imageSettings={logoUrl ? {
+                                                src: logoUrl,
+                                                height: logoSize,
+                                                width: logoSize,
+                                                excavate: true,
+                                            } : undefined}
                                         />
                                     </div>
                                 </div>
