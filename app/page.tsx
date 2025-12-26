@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic, ScanText } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic, ScanText, QrCode } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -187,6 +187,13 @@ export default function Page() {
             id: "dev",
             label: "Developer Tools",
             tools: [
+                {
+                    title: "QR Code Studio",
+                    description: "Generate and scan QR codes.",
+                    icon: <QrCode className="h-10 w-10 text-primary" />,
+                    href: "/tools/qr-code",
+                    cta: "Open Studio",
+                },
                 {
                     title: "JSON Formatter",
                     description: "Prettify, minify, and validate JSON data.",

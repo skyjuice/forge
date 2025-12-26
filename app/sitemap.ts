@@ -29,6 +29,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // Image Tools
         '/tools/ocr',
         '/tools/image-converter',
+        // Utilities
+        '/tools/qr-code',
         // Developer Tools
         '/tools/dev/json-formatter',
         '/tools/dev/xml-formatter',
