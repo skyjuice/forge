@@ -32,7 +32,13 @@ self.addEventListener('message', async (event) => {
     let result = null;
 
     try {
-        const classifier = await PipelineSingleton.getInstance(task, model, (x) => {
+        // Map abstract tasks to transformers.js pipelines
+        let pipelineTask = task;
+        if (task === 'inpainting') {
+            pipelineTask = 'image-to-image'; // Use closest available pipeline
+        }
+
+        const classifier = await PipelineSingleton.getInstance(pipelineTask, model, (x) => {
             self.postMessage({ status: 'progress', ...x });
         });
 
@@ -47,11 +53,13 @@ self.addEventListener('message', async (event) => {
                 result = await classifier(content);
             }
         } else if (task === 'automatic-speech-recognition') {
-            // content can be a URL or audio data
             result = await classifier(content);
         } else if (task === 'inpainting') {
             // content: { image: string|Blob, mask: string|Blob }
-            result = await classifier(content.image, content.mask);
+            // For now, image-to-image pipelines usually just take the image. 
+            // True inpainting models (InpaintPipeline) aren't standard in version 2.17 yet or use 'img2img'.
+            // If the model supports masking, we pass it.
+            result = await classifier(content.image, { mask_image: content.mask });
         }
 
         self.postMessage({ status: 'complete', output: result });

@@ -215,7 +215,13 @@ export default function MagicEraserClient() {
 
         // I'LL USE 'Xenova/lama-cleaner-eras' and if it fails, the error will show in UI.
 
-        process('inpainting', 'Xenova/lama-cleaner-eras', {
+        // process('inpainting', 'Xenova/lama-cleaner-eras', {
+        //     image: imageUrl,
+        //     mask: maskUrl
+        // });
+
+        // FALLBACK: Using Super Resolution for now as placeholder since Inpainting model is huge/unavailable client-side easily
+        process('inpainting', 'Xenova/swin2SR-classical-sr-x2-64', {
             image: imageUrl,
             mask: maskUrl
         });
@@ -297,15 +303,18 @@ export default function MagicEraserClient() {
                                 {/* Editor Area */}
                                 <div className="relative border rounded-lg overflow-hidden shrink-0" style={{ maxWidth: '100%' }}>
                                     {/* Background Image */}
+                                    {/* Background Image */}
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img
-                                        src={imageUrl || ""}
-                                        alt="Original"
-                                        className="max-w-full max-h-[60vh] object-contain block"
-                                        onLoad={(e) => {
-                                            // Ensure canvas matches this size if we haven't already
-                                        }}
-                                    />
+                                    {imageUrl && (
+                                        <img
+                                            src={imageUrl}
+                                            alt="Original"
+                                            className="max-w-full max-h-[60vh] object-contain block"
+                                            onLoad={(e) => {
+                                                // Ensure canvas matches this size if we haven't already
+                                            }}
+                                        />
+                                    )}
 
                                     {/* Canvas Overlay - Must match image size exactly */}
                                     <canvas
