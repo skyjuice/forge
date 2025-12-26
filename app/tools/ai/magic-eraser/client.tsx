@@ -327,6 +327,17 @@ export default function MagicEraserClient() {
                     <CardDescription>Upload an image and paint over the object you want to remove.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
+                    <div className="bg-yellow-500/10 border border-yellow-500/50 text-yellow-700 dark:text-yellow-400 px-4 py-3 rounded-md flex items-start gap-3 text-sm">
+                        <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                        <div>
+                            <p className="font-medium">Experimental Feature (Beta)</p>
+                            <p className="opacity-90">
+                                This tool runs entirely in your browser using a lightweight algorithm.
+                                Complex objects may not be erased perfectly and results might appear blurry.
+                            </p>
+                        </div>
+                    </div>
+
                     {!file ? (
                         <Dropzone onFilesSelected={handleFiles} accept="image/*" maxFiles={1} className="h-64" />
                     ) : (
