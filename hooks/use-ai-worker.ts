@@ -5,7 +5,7 @@ export interface WorkerStatus {
     status: 'idle' | 'loading' | 'processing' | 'complete' | 'error';
     progress?: number;
     file?: string;
-    output?: any;
+    output?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     error?: string;
 }
 
@@ -51,7 +51,7 @@ export function useAIWorker(workerPath: string = '/ai-worker.js') {
         };
     }, [workerPath]);
 
-    const process = useCallback((task: string, model: string, content: any) => {
+    const process = useCallback((task: string, model: string, content: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
         if (workerRef.current) {
             setStatus({ status: 'processing', progress: 0 });
             workerRef.current.postMessage({ task, model, content });

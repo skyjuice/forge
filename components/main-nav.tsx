@@ -36,6 +36,8 @@ const navConfig = [
             { title: "Merge PDF", href: "/tools/pdf-merger" },
             { title: "Split PDF", href: "/tools/split-pdf" },
             { title: "Rotate PDF", href: "/tools/rotate-pdf" },
+            { title: "Sign PDF", href: "/tools/pdf/sign-pdf" },
+            { title: "Compress PDF", href: "/tools/pdf/compress-pdf" },
             { title: "Organize PDF", href: "/tools/organize-pdf" },
             { title: "PDF to JPG", href: "/tools/pdf-to-jpg" },
             { title: "Page Numbers", href: "/tools/page-numbers" },
@@ -63,6 +65,7 @@ const navConfig = [
     {
         title: "AI Tools",
         items: [
+            { title: "Magic Eraser", href: "/tools/ai/magic-eraser" },
             { title: "Summarizer", href: "/tools/ai/summarizer" },
             { title: "Transcriber", href: "/tools/ai/transcriber" },
             { title: "Translator", href: "/tools/ai/translator" },

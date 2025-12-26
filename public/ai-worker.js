@@ -49,6 +49,9 @@ self.addEventListener('message', async (event) => {
         } else if (task === 'automatic-speech-recognition') {
             // content can be a URL or audio data
             result = await classifier(content);
+        } else if (task === 'inpainting') {
+            // content: { image: string|Blob, mask: string|Blob }
+            result = await classifier(content.image, content.mask);
         }
 
         self.postMessage({ status: 'complete', output: result });

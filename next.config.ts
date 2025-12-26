@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   compress: true,
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    return config;
+  },
+  serverExternalPackages: ["pdfjs-dist"],
 };
 
 export default nextConfig;

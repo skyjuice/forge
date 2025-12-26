@@ -13,12 +13,42 @@ export default function ChangelogPage() {
             <div className="space-y-8">
 
 
+
+                {/* Version 1.9.0 */}
+                <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                        <div className="flex items-center gap-4">
+                            <CardTitle className="text-2xl">v1.9.0</CardTitle>
+                            <Badge variant="default">Latest</Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">December 26, 2025</span>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Magic Eraser & Advanced PDF Tools 🪄📄</h3>
+                            <p className="text-muted-foreground text-sm">Introducing the AI-powered Magic Eraser and enhanced PDF capabilities.</p>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>Magic Eraser:</strong> Remove unwanted objects from images instantly using local AI inpainting.</li>
+                                <li><strong>Sign PDF:</strong> Sign documents securely with drag-and-drop capability and resizeable signatures.</li>
+                                <li><strong>Compress PDF:</strong> Optimize PDF file sizes directly in your browser without quality loss.</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-2">
+                            <h3 className="font-semibold text-lg">Fixes & Improvements</h3>
+                            <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-2">
+                                <li><strong>PDF Reliability:</strong> Resolved critical SSR compatibility issues for PDF tools.</li>
+                                <li><strong>Signature UX:</strong> Added resize handles and improved positioning logic for signatures.</li>
+                            </ul>
+                        </div>
+                    </CardContent>
+                </Card>
+
                 {/* Version 1.8.0 */}
                 <Card>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <div className="flex items-center gap-4">
                             <CardTitle className="text-2xl">v1.8.0</CardTitle>
-                            <Badge variant="default">Latest</Badge>
+                            <Badge variant="secondary">Previous</Badge>
                         </div>
                         <span className="text-sm text-muted-foreground">December 26, 2025</span>
                     </CardHeader>
