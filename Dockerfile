@@ -28,9 +28,8 @@ WORKDIR /app
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
-# Increase Node memory limit to use Swap space (Total 5GB available: 1GB RAM + 4GB Swap)
-# We set it to ~3.5GB to leave room for OS
-ENV NODE_OPTIONS="--max-old-space-size=3584"
+# Optimized for high-memory environments
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 # Deprecated: Chromium/FFmpeg removed to save space. 
 # Media tools now run client-side (WASM).
