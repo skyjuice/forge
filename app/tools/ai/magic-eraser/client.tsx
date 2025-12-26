@@ -254,8 +254,39 @@ export default function MagicEraserClient() {
                 canvas.height = output.height;
                 const ctx = canvas.getContext('2d');
                 if (ctx) {
+                    const pixelCount = output.width * output.height;
+                    const channels = output.data.length / pixelCount;
+
+                    let rgbaData;
+
+                    if (channels === 4) {
+                        rgbaData = new Uint8ClampedArray(output.data);
+                    } else if (channels === 3) {
+                        // RGB to RGBA
+                        rgbaData = new Uint8ClampedArray(pixelCount * 4);
+                        for (let i = 0; i < pixelCount; i++) {
+                            rgbaData[i * 4] = output.data[i * 3];     // R
+                            rgbaData[i * 4 + 1] = output.data[i * 3 + 1]; // G
+                            rgbaData[i * 4 + 2] = output.data[i * 3 + 2]; // B
+                            rgbaData[i * 4 + 3] = 255;                // A
+                        }
+                    } else if (channels === 1) {
+                        // Grayscale to RGBA
+                        rgbaData = new Uint8ClampedArray(pixelCount * 4);
+                        for (let i = 0; i < pixelCount; i++) {
+                            const val = output.data[i];
+                            rgbaData[i * 4] = val; // R
+                            rgbaData[i * 4 + 1] = val; // G
+                            rgbaData[i * 4 + 2] = val; // B
+                            rgbaData[i * 4 + 3] = 255; // A
+                        }
+                    } else {
+                        console.error("Unsupported channel count:", channels);
+                        return;
+                    }
+
                     const imageData = new ImageData(
-                        new Uint8ClampedArray(output.data),
+                        rgbaData,
                         output.width,
                         output.height
                     );
