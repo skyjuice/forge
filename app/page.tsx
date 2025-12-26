@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic, ScanText, QrCode } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic, ScanText, QrCode, PenLine } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -79,6 +79,20 @@ export default function Page() {
                     href: "/tools/watermark",
                     cta: "Watermark PDF",
                 },
+                {
+                    title: "Sign PDF",
+                    description: "Add your signature to PDF documents.",
+                    icon: <PenLine className="h-10 w-10 text-primary" />,
+                    href: "/tools/pdf/sign-pdf",
+                    cta: "Sign PDF",
+                },
+                {
+                    title: "Compress PDF",
+                    description: "Reduce PDF file size efficiently.",
+                    icon: <Minimize2 className="h-10 w-10 text-primary" />,
+                    href: "/tools/pdf/compress-pdf",
+                    cta: "Compress PDF",
+                },
             ],
         },
         {
@@ -91,6 +105,13 @@ export default function Page() {
                     icon: <Sparkles className="h-10 w-10 text-primary" />,
                     href: "/tools/ai/summarizer",
                     cta: "Summarize Text",
+                },
+                {
+                    title: "Magic Eraser",
+                    description: "Remove unwanted objects from images.",
+                    icon: <Eraser className="h-10 w-10 text-primary" />,
+                    href: "/tools/ai/magic-eraser",
+                    cta: "Erase Objects",
                 },
                 {
                     title: "AI Transcriber",
