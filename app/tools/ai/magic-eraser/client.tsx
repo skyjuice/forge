@@ -22,7 +22,9 @@ export default function MagicEraserClient() {
     const contextRef = useRef<CanvasRenderingContext2D | null>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { status, process } = useAIWorker();
+    // const { status, process } = useAIWorker(); // Disabled to use local algorithm
+    const [status, setStatus] = useState<{ status: string; progress?: number; error?: string; output?: any }>({ status: 'idle' });
+    const [isProcessing, setIsProcessing] = useState(false);
     const [resultUrl, setResultUrl] = useState<string | null>(null);
 
     // Initialize canvas when image loads
@@ -126,108 +128,106 @@ export default function MagicEraserClient() {
         }
     };
 
+    // ALGORITHMIC INPAINTING (Client-Side Fallback)
     const handleErase = async () => {
-        if (!file || !canvasRef.current || !imageUrl) return;
+        if (!file || !canvasRef.current || !imageUrl || !originalImage) return;
 
-        // 1. Convert mask canvas to a black/white mask image
-        // Transformers inpainting expects: black background, white mask area (usually)
-        // Or checks the alpha channel?
-        // Let's create a specific mask canvas
-        const maskCanvas = document.createElement("canvas");
-        maskCanvas.width = canvasRef.current.width;
-        maskCanvas.height = canvasRef.current.height;
-        const maskCtx = maskCanvas.getContext("2d");
+        setIsProcessing(true);
+        setStatus({ status: 'processing', progress: 0 });
 
-        if (!maskCtx) return;
+        // Use setTimeout to allow UI to update before heavy calculation
+        setTimeout(() => {
+            try {
+                const canvas = canvasRef.current!;
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                if (!ctx) return;
 
-        // Fill black
-        maskCtx.fillStyle = "black";
-        maskCtx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+                const width = canvas.width;
+                const height = canvas.height;
 
-        // Draw the red strokes from the visible canvas as white strokes
-        // This is tricky because we didn't save the paths, we just drew pixels.
-        // We can draw the visible canvas onto this one using source-in or just composite?
-        // Actually, we can loop pixels, but that's slow.
-        // Better: We see the visible canvas has rgba(255, 0, 0, 0.5).
-        // We can draw the visible canvas on top, then use globalCompositeOperation to turn non-transparent pixels white.
+                // 1. Get Mask Data (Red pixels)
+                const maskData = ctx.getImageData(0, 0, width, height);
 
-        maskCtx.drawImage(canvasRef.current, 0, 0);
+                // 2. We need the ORIGINAL image data to modify
+                const imgCanvas = document.createElement('canvas');
+                imgCanvas.width = width;
+                imgCanvas.height = height;
+                const imgCtx = imgCanvas.getContext('2d', { willReadFrequently: true });
+                if (!imgCtx) return;
+                imgCtx.drawImage(originalImage, 0, 0, width, height);
+                const imageData = imgCtx.getImageData(0, 0, width, height);
 
-        // Thresholding to make it pure white where drawn
-        // Simple approach: The canvas only has the strokes.
-        // We can just set composite operation 'source-in' with white fill?
+                const data = imageData.data;
+                const mask = maskData.data;
 
-        maskCtx.globalCompositeOperation = "source-in";
-        maskCtx.fillStyle = "white";
-        maskCtx.fillRect(0, 0, maskCanvas.width, maskCanvas.height);
+                // Identify mask indices
+                const maskIndices: number[] = [];
+                for (let i = 0; i < mask.length; i += 4) {
+                    // Check if this pixel is part of the mask (red brush)
+                    if (mask[i] > 100 && mask[i + 3] > 10) {
+                        maskIndices.push(i);
+                    }
+                }
 
-        // Convert to blob/url
-        const maskUrl = maskCanvas.toDataURL("image/png");
+                if (maskIndices.length === 0) {
+                    setIsProcessing(false);
+                    setStatus({ status: 'idle' });
+                    return;
+                }
 
-        // 2. Call Worker
-        // Model: Using 'Xenova/lama-cleaner-eras' if available or standard inpainting model 'Xenova/stable-diffusion-inpainting' (too big)
-        // Let's try a smaller one. 'Xenova/remove-object-eras' doesn't exist.
-        // Search suggested nothing specific small. 
-        // Let's try generic generic 'inpainting' task which defaults to a model, or 'Xenova/aot-gan-eras' (if exists).
-        // Let's use 'Xenova/sophia-inpainting' or just rely on 'inpainting' default?
-        // Actually, 'Xenova/lama-cleaner-eras' was a guess.
-        // Let's try 'Xenova/icgan-inpainting' or similar. 
-        // Better: 'Xenova/modnet' is for matting.
-        // Let's stick to a known small one if possible. 
-        // Ideally 'Uminosachi/manga-inpainting' is small but specific.
-        // Let's use 'Xenova/laion-art' or similar? 
-        // WAIT. I don't know a guaranteed small inpainting model on HF that works with transformers.js out of box.
-        // I will use 'Xenova/tiny-random-LlamaForCasualLM' as placeholder? No.
-        // Let's try 'Xenova/inpaint-web' - nonexistent.
+                // Diffusion Inpainting: Run multiple passes
+                const passes = 20;
+                for (let p = 0; p < passes; p++) {
+                    for (const idx of maskIndices) {
+                        const x = (idx / 4) % width;
+                        const y = Math.floor((idx / 4) / width);
 
-        // REAL PLAN: Use 'Xenova/opus-mt-en-de' (just to test worker)? No.
-        // I will trust 'Xenova/lama-cleaner-eras' exists or fail and ask user to pick.
-        // Actually, let's look for 'fffiloni/bert-inpainting'?
-        // No, I'll use the task 'inpainting' and let it pick default, or 'Xenova/mimic-brush' (no).
-        // Let's try 'Xenova/controlnet-canny-sdxl-1.0' (huge).
-        // OK, I will try a standard one: 'Xenova/vit-mae-base' (masked autoencoder)?
+                        let rSum = 0, gSum = 0, bSum = 0, count = 0;
 
-        // Let's use 'Xenova/eraser-base' (made up).
-        // I will use 'Xenova/cifar10-mask-generation' (made up).
+                        // Check 8 neighbors
+                        for (let dy = -1; dy <= 1; dy++) {
+                            for (let dx = -1; dx <= 1; dx++) {
+                                if (dx === 0 && dy === 0) continue;
+                                const nx = x + dx;
+                                const ny = y + dy;
 
-        // Safer bet: 'Xenova/glpn-kitti' is depth. 
+                                if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
+                                    const nIdx = (ny * width + nx) * 4;
+                                    rSum += data[nIdx];
+                                    gSum += data[nIdx + 1];
+                                    bSum += data[nIdx + 2];
+                                    count++;
+                                }
+                            }
+                        }
 
-        // Let's use 'Xenova/swin-tiny-patch4-window7-224' (generic vision).
+                        if (count > 0) {
+                            data[idx] = rSum / count;
+                            data[idx + 1] = gSum / count;
+                            data[idx + 2] = bSum / count;
+                            data[idx + 3] = 255;
+                        }
+                    }
 
-        // OK, I'm unsure of the model ID.
-        // I'll use 'Xenova/lama-cleaner-eras' in the code but add a comment/fallback.
-        // For now, let's use 'Xenova/vit-base-patch16-224-in21k' is not inpainting.
+                    setStatus({ status: 'processing', progress: Math.min(99, (p / passes) * 100) });
+                }
 
-        // Let's try 'Xenova/runwayml/stable-diffusion-inpainting' (Huge, requires WebGPU).
-        // If the user has WebGPU, it might work.
+                imgCtx.putImageData(imageData, 0, 0);
 
-        // Re-reading search results: "no specific inpainting model highlighted".
-        // I will try to use the `imgly` background removal "invert" trick? No, that just removes bg.
+                setResultUrl(imgCanvas.toDataURL());
+                setStatus({ status: 'complete', progress: 100 });
+                setIsProcessing(false);
 
-        // Let's assume 'Xenova/m2m100_418M' is translation.
-
-        // I will use 'Xenova/feature-extraction' as a test? No.
-
-        // Okay, I will use a placeholder 'Xenova/inpaint-tiny-random' to permit code to run, 
-        // but realistic recommendation is 'Xenova/stable-diffusion-v1-5-inpainting' (but filtered for size?).
-        // Actually, existing implementation of this usually uses a GAN.
-        // 'Xenova/aot-gan' might exist.
-
-        // I'LL USE 'Xenova/lama-cleaner-eras' and if it fails, the error will show in UI.
-
-        // process('inpainting', 'Xenova/lama-cleaner-eras', {
-        //     image: imageUrl,
-        //     mask: maskUrl
-        // });
-
-        // FALLBACK: Using Super Resolution for now as placeholder since Inpainting model is huge/unavailable client-side easily
-        process('inpainting', 'Xenova/swin2SR-classical-sr-x2-64', {
-            image: imageUrl,
-            mask: maskUrl
-        });
+            } catch (e) {
+                console.error("Inpainting error", e);
+                setStatus({ status: 'error', error: "Failed to erase object." });
+                setIsProcessing(false);
+            }
+        }, 100);
     };
 
     // Update result when complete
+    /*
     useEffect(() => {
         if (status.status === 'complete' && status.output) {
             // Output is usually an Image object or Blob?
@@ -298,6 +298,7 @@ export default function MagicEraserClient() {
             }
         }
     }, [status]);
+    */
 
 
     const handleFiles = (files: File[]) => {
