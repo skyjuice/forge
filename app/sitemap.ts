@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/tools/ai/translator',
         '/tools/ai/sentiment',
         // Image Tools
+        '/tools/ocr',
         '/tools/image-converter',
         // Developer Tools
         '/tools/dev/json-formatter',

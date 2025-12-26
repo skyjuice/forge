@@ -45,6 +45,7 @@ const navConfig = [
     {
         title: "Images",
         items: [
+            { title: "Image to Text (OCR)", href: "/tools/ocr" },
             { title: "Converter", href: "/tools/image-converter" },
             { title: "Resizer", href: "/tools/image-resizer" },
             { title: "Compressor", href: "/tools/image-compressor" },

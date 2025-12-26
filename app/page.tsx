@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic } from "lucide-react";
+import { ArrowRight, FileMusic, Scissors, FileType2, FileText, Minimize2, Images, Files, Ungroup, RotateCw, LayoutGrid, FileImage, Hash, Stamp, RefreshCcw, Scaling, Eraser, Braces, FileCode, Database, Diff, Key, Shield, Sparkles, Languages, Smile, Mic, ScanText } from "lucide-react";
 
 interface Tool {
     title: string;
@@ -119,6 +119,13 @@ export default function Page() {
             id: "images",
             label: "Image Tools",
             tools: [
+                {
+                    title: "Image to Text (OCR)",
+                    description: "Extract text from screenshots and photos.",
+                    icon: <ScanText className="h-10 w-10 text-primary" />,
+                    href: "/tools/ocr",
+                    cta: "Extract Text",
+                },
                 {
                     title: "Image Converter",
                     description: "Convert images between JPG, PNG, and WebP.",
